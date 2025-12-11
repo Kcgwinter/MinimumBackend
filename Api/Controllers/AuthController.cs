@@ -35,6 +35,7 @@ namespace Api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserLoginDto loginDto)
         {
+            Console.WriteLine("Login attempt received.");
             try
             {
                 var token = await _authService.LoginAsync(loginDto);

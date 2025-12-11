@@ -74,8 +74,6 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseMiddleware<ExceptionMiddleware>();
-
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
