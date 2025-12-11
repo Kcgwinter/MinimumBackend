@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Interfaces;
 using Infrastructure.Data;
@@ -41,5 +42,16 @@ namespace Infrastructure.Repositories
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
+        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
+    => await _dbSet.AnyAsync(predicate);
+
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null!)
+            => predicate == null
+                ? await _dbSet.CountAsync()
+                : await _dbSet.CountAsync(predicate);
+
+
+        public async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate)
+            => await _dbSet.Where(predicate).ToListAsync();
     }
 }
