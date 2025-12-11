@@ -8,7 +8,7 @@ using Core.Entities;
 
 namespace Infrastructure.Data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
         public DbSet<User> Users { get; set; }
         public DbSet<TodoItem> TodoItems { get; set; }
