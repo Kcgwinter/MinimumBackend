@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Features.TodoList.Services
 {
-    public class TodoService
+    public class TodoService : ITodoService
     {
-        
+
     }
 }
