@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Features.TodoList.Controllers
+namespace Features.Todo.Services
 {
-    public class TodoController
+    public class TodoService
     {
         
     }

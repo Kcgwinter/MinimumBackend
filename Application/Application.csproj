@@ -16,4 +16,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+    <ItemGroup>
+    <Compile Include="Features\**\**\*.cs" />
+  </ItemGroup>
+
 </Project>
