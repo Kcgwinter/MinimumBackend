@@ -2,15 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Features.Todo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Features.Todo.Data
 {
-    public class TodoDbContext(DbContextOptions<TodoDbContext> options) : DBContext(options)
+    public class TodoDbContext(DbContextOptions<TodoDbContext> options) : DbContext(options)
     {
         public DbSet<TodoItem> TodoItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("todo");
+
             modelBuilder.Entity<TodoItem>(entity =>
             {
                 entity.HasKey(e => e.Id);
