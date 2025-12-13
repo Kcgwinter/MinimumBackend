@@ -28,8 +28,6 @@ namespace Features.Todo
             services.AddControllers()
     .AddApplicationPart(typeof(TodoController).Assembly);
 
-
-
             return services;
         }
     }
