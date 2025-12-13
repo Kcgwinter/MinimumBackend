@@ -1792,6 +1792,27 @@
         "runtime": {
           "bin/placeholder/Infrastructure.dll": {}
         }
+      },
+      "Todo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.1",
+          "Microsoft.AspNetCore.OpenApi": "10.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "10.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "10.0.1",
+          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.1",
+          "Microsoft.EntityFrameworkCore.Tools": "10.0.1",
+          "Scalar.AspNetCore": "2.11.5"
+        },
+        "compile": {
+          "bin/placeholder/Todo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Todo.dll": {}
+        }
       }
     }
   },
@@ -4317,6 +4338,11 @@
       "type": "project",
       "path": "../Infrastructure/Infrastructure.csproj",
       "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+    },
+    "Todo/1.0.0": {
+      "type": "project",
+      "path": "../Features/Todo/Todo.csproj",
+      "msbuildProject": "../Features/Todo/Todo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4329,7 +4355,8 @@
       "Microsoft.AspNetCore.OpenApi >= 10.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Sqlite >= 10.0.1",
-      "Scalar.AspNetCore >= 2.11.5"
+      "Scalar.AspNetCore >= 2.11.5",
+      "Todo >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4362,6 +4389,9 @@
             },
             "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
               "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+            },
+            "F:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj": {
+              "projectPath": "F:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj"
             }
           }
         }

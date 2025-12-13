@@ -11,7 +11,6 @@ namespace Infrastructure.Data
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<TodoItem> TodoItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,13 +24,6 @@ namespace Infrastructure.Data
                 entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
             });
 
-            modelBuilder.Entity<TodoItem>(entity =>
-            {
-                entity.HasOne(t => t.User)
-                      .WithMany(u => u.TodoItems)
-                      .HasForeignKey(t => t.UserId)
-                      .OnDelete(DeleteBehavior.Cascade);
-            });
         }
     }
 }

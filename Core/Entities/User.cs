@@ -17,8 +17,6 @@ namespace Core.Entities
         public bool IsActive { get; set; } = true;
 
 
-        // Navigation properties
-        public ICollection<TodoItem> TodoItems { get; set; } = new List<TodoItem>();
 
     }
 }

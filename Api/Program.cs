@@ -8,12 +8,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Api.Middleware;
+using Features.Todo;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Features.Todo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container
 builder.Services.AddControllers();
+
+//Add Features
+builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -64,15 +72,8 @@ builder.Services.AddCors(options =>
 });
 
 
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.MapScalarApiReference();
-}
 
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
@@ -80,13 +81,22 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
+
 // Ensure database is created and migrations applied
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
     dbContext.Database.EnsureCreated();
+    dbTodoContext.Database.EnsureCreated();
 }
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.MapScalarApiReference();
+}
 
 app.Run();
 

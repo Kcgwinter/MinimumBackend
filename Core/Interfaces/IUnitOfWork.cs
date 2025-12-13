@@ -9,7 +9,6 @@ namespace Core.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<User> Users { get; }
-        IRepository<TodoItem> TodoItems { get; }
         Task<int> CompleteAsync();
 
     }
