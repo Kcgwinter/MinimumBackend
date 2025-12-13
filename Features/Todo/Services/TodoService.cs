@@ -90,5 +90,11 @@ namespace Features.Todo.Services
             };
         }
 
+        public async Task<List<TodoResponseDto>> GetAllNoUserAsync()
+        {
+            var todos = await _context.TodoItems.ToListAsync();
+
+            return todos.Select(t => MapToDto(t)).ToList();
+        }
     }
 }
