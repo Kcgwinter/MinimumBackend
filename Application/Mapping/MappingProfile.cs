@@ -16,10 +16,6 @@ namespace Application.Mapping
             CreateMap<UserRegisterDto, User>();
             CreateMap<User, UserResponseDto>();
 
-            //Todo Mappings
-            CreateMap<TodoCreateDto, TodoItem>();
-            CreateMap<TodoUpdateDto, TodoItem>();
-            CreateMap<TodoItem, TodoResponseDto>();
         }
     }
 }

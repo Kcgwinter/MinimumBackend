@@ -19,7 +19,8 @@ namespace Features.Todo
         {
             // Register TodoList DbContext with shared connection string
             services.AddDbContext<TodoDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlite(connectionString)
+    );
             Console.WriteLine("Todo Feature Registered with Connection String: " + connectionString);
             // Register TodoList services
             services.AddScoped<ITodoService, TodoService>();

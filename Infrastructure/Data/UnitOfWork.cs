@@ -14,13 +14,11 @@ namespace Infrastructure.Data
     {
         private readonly AppDbContext _dbContext;
         public IRepository<User> Users { get; private set; }
-        public IRepository<TodoItem> TodoItems { get; private set; }
 
         public UnitOfWork(AppDbContext dbContext)
         {
             _dbContext = dbContext;
             Users = new Repository<User>(_dbContext);
-            TodoItems = new Repository<TodoItem>(_dbContext);
         }
 
         public async Task<int> CompleteAsync()

@@ -12,6 +12,7 @@ using Features.Todo;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Features.Todo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //Add Features
-// builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -85,7 +86,9 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
     dbContext.Database.EnsureCreated();
+    dbTodoContext.Database.EnsureCreated();
 }
 
 // Configure the HTTP request pipeline.
