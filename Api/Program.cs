@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //Add Features
-builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection"));
+// builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddEndpointsApiExplorer();
 
