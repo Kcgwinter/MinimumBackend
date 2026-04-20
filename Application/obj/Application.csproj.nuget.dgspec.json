@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\Dev\\MinimumBackend\\Application\\Application.csproj": {}
+    "F:\\Dev\\MinimumBackend\\Application\\Application.csproj": {}
   },
   "projects": {
-    "f:\\Dev\\MinimumBackend\\Application\\Application.csproj": {
+    "F:\\Dev\\MinimumBackend\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+        "projectPath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "f:\\Dev\\MinimumBackend\\Application\\obj\\",
+        "outputPath": "F:\\Dev\\MinimumBackend\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-                "projectPath": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+              "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+                "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
               },
-              "f:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "f:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
+              "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -361,14 +361,14 @@
         }
       }
     },
-    "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+    "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj",
+        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj",
+        "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "f:\\Dev\\MinimumBackend\\Core\\obj\\",
+        "outputPath": "F:\\Dev\\MinimumBackend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -701,14 +701,14 @@
         }
       }
     },
-    "f:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
+    "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "f:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "f:\\Dev\\MinimumBackend\\Infrastructure\\obj\\",
+        "outputPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -730,8 +730,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-                "projectPath": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+              "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+                "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
               }
             }
           }

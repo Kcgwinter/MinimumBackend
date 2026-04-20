@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VzBUIDcnfYw=",
+  "dgSpecHash": "txA6N5fnT6E=",
   "success": true,
-  "projectFilePath": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+  "projectFilePath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kcgwi\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -70,9 +70,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 16.1.1 was resolved.",
-      "projectPath": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+      "projectPath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
       "warningLevel": 1,
-      "filePath": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+      "filePath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"
