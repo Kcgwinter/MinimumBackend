@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {}
+    "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {}
   },
   "projects": {
-    "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+    "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
+        "projectUniqueName": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
+        "projectPath": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "F:\\Dev\\MinimumBackend\\Core\\obj\\",
+        "outputPath": "f:\\Dev\\MinimumBackend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

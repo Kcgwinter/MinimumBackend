@@ -3728,11 +3728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Dev\\MinimumBackend\\Api\\Api.csproj",
+      "projectUniqueName": "f:\\Dev\\MinimumBackend\\Api\\Api.csproj",
       "projectName": "Api",
-      "projectPath": "F:\\Dev\\MinimumBackend\\Api\\Api.csproj",
+      "projectPath": "f:\\Dev\\MinimumBackend\\Api\\Api.csproj",
       "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-      "outputPath": "F:\\Dev\\MinimumBackend\\Api\\obj\\",
+      "outputPath": "f:\\Dev\\MinimumBackend\\Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3754,14 +3754,14 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "F:\\Dev\\MinimumBackend\\Application\\Application.csproj": {
-              "projectPath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj"
+            "f:\\Dev\\MinimumBackend\\Application\\Application.csproj": {
+              "projectPath": "f:\\Dev\\MinimumBackend\\Application\\Application.csproj"
             },
-            "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-              "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+            "f:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+              "projectPath": "f:\\Dev\\MinimumBackend\\Core\\Core.csproj"
             },
-            "F:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj": {
-              "projectPath": "F:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj"
+            "f:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj": {
+              "projectPath": "f:\\Dev\\MinimumBackend\\Features\\Todo\\Todo.csproj"
             }
           }
         }
