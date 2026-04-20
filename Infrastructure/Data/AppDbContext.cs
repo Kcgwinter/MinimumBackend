@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
-using Core.Entities;
 
 namespace Infrastructure.Data
 {
@@ -23,7 +23,6 @@ namespace Infrastructure.Data
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
             });
-
         }
     }
 }
