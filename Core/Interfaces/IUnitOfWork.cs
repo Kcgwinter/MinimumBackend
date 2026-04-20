@@ -10,6 +10,5 @@ namespace Core.Interfaces
     {
         IRepository<User> Users { get; }
         Task<int> CompleteAsync();
-
     }
 }

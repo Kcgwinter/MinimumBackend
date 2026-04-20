@@ -15,7 +15,8 @@ namespace Api.Middleware
         public ExceptionMiddleware(
             RequestDelegate next,
             ILogger<ExceptionMiddleware> logger,
-            IHostEnvironment env)
+            IHostEnvironment env
+        )
         {
             _next = next;
             _logger = logger;
@@ -40,10 +41,17 @@ namespace Api.Middleware
             context.Response.ContentType = "application/json";
 
             var response = _env.IsDevelopment()
-                ? new ApiException(context.Response.StatusCode, exception.Message, exception.StackTrace)
+                ? new ApiException(
+                    context.Response.StatusCode,
+                    exception.Message,
+                    exception.StackTrace
+                )
                 : new ApiException(context.Response.StatusCode, "Internal Server Error");
 
-            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            };
             var json = JsonSerializer.Serialize(response, options);
 
             return context.Response.WriteAsync(json);

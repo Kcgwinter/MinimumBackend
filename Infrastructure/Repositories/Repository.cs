@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class Repository<T>(AppDbContext context) : IRepository<T> where T : class
+    public class Repository<T>(AppDbContext context) : IRepository<T>
+        where T : class
     {
         protected readonly AppDbContext _context = context;
         protected readonly DbSet<T> _dbSet = context.Set<T>();
@@ -42,16 +43,14 @@ namespace Infrastructure.Repositories
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
-        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
-    => await _dbSet.AnyAsync(predicate);
 
-        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null!)
-            => predicate == null
-                ? await _dbSet.CountAsync()
-                : await _dbSet.CountAsync(predicate);
+        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.AnyAsync(predicate);
 
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null!) =>
+            predicate == null ? await _dbSet.CountAsync() : await _dbSet.CountAsync(predicate);
 
-        public async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate)
-            => await _dbSet.Where(predicate).ToListAsync();
+        public async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.Where(predicate).ToListAsync();
     }
 }
