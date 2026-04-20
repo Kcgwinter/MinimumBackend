@@ -34,14 +34,18 @@ namespace Application.Services
             if (await UserExistsAsync(registerDto.Username))
                 throw new ApplicationException("Username already exists");
 
-            CreatePasswordHash(registerDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            CreatePasswordHash(
+                registerDto.Password,
+                out byte[] passwordHash,
+                out byte[] passwordSalt
+            );
 
             var user = new User
             {
                 Username = registerDto.Username,
                 Email = registerDto.Email,
                 PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt
+                PasswordSalt = passwordSalt,
             };
 
             await _unitOfWork.Users.AddAsync(user);
@@ -52,10 +56,14 @@ namespace Application.Services
 
         public async Task<string> LoginAsync(UserLoginDto loginDto)
         {
-            var user = (await _unitOfWork.Users.FindAsync(u => u.Username == loginDto.Username))
-                .FirstOrDefault();
+            var user = (
+                await _unitOfWork.Users.FindAsync(u => u.Username == loginDto.Username)
+            ).FirstOrDefault();
 
-            if (user == null || !VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt))
+            if (
+                user == null
+                || !VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt)
+            )
                 throw new ApplicationException("Invalid credentials");
 
             return CreateToken(user);
@@ -66,7 +74,11 @@ namespace Application.Services
             return await _unitOfWork.Users.ExistsAsync(u => u.Username == username);
         }
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        private void CreatePasswordHash(
+            string password,
+            out byte[] passwordHash,
+            out byte[] passwordSalt
+        )
         {
             using var hmac = new HMACSHA512();
             passwordSalt = hmac.Key;
@@ -83,14 +95,13 @@ namespace Application.Services
         private string CreateToken(User user)
         {
             var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Role, user.Role)
-        };
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role),
+            };
 
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
@@ -100,7 +111,7 @@ namespace Application.Services
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = creds,
                 Issuer = _configuration["Jwt:Issuer"],
-                Audience = _configuration["Jwt:Audience"]
+                Audience = _configuration["Jwt:Audience"],
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -108,6 +119,5 @@ namespace Application.Services
 
             return tokenHandler.WriteToken(token);
         }
-
     }
 }

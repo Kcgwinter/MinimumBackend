@@ -24,22 +24,27 @@ namespace Api.Controllers
                 // Check database connectivity
                 await _context.Database.CanConnectAsync();
 
-                return Ok(new
-                {
-                    status = "Healthy",
-                    timestamp = DateTime.UtcNow,
-                    database = "Connected"
-                });
+                return Ok(
+                    new
+                    {
+                        status = "Healthy",
+                        timestamp = DateTime.UtcNow,
+                        database = "Connected",
+                    }
+                );
             }
             catch (Exception ex)
             {
-                return StatusCode(503, new
-                {
-                    status = "Unhealthy",
-                    timestamp = DateTime.UtcNow,
-                    database = "Disconnected",
-                    error = ex.Message
-                });
+                return StatusCode(
+                    503,
+                    new
+                    {
+                        status = "Unhealthy",
+                        timestamp = DateTime.UtcNow,
+                        database = "Disconnected",
+                        error = ex.Message,
+                    }
+                );
             }
         }
     }

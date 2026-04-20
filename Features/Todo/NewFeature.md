@@ -13,10 +13,7 @@ MyApi/Features/Todo/
 │   └── TodoDbContext.cs
 └── TodoListExtensions.cs  # For clean Program.cs integration
 
-
 ### 
-
-
 ## DB Migrations
 To run DB Migrations run in the Main API:
 

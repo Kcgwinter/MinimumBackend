@@ -5,12 +5,19 @@ using System.Threading.Tasks;
 
 namespace Features.Todo.DTOs
 {
-
     // DTOs in same file for simplicity
     public class TodoCreateDto
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public DateTime DueDate { get; set; }
+    }
+
+    public class TodoUpdateDto
+    {
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public bool IsCompleted { get; set; }
         public DateTime DueDate { get; set; }
     }
 
