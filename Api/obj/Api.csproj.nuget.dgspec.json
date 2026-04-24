@@ -63,7 +63,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[16.1.1, )"
+              "version": "[12.0.1, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -72,6 +72,14 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[10.0.6, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -583,7 +591,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[16.1.1, )"
+              "version": "[12.0.1, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -1273,7 +1281,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[16.1.1, )"
+              "version": "[12.0.1, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -1282,6 +1290,14 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[10.0.6, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

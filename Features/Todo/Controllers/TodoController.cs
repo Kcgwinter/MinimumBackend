@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -8,13 +7,13 @@ using Features.Todo.DTOs;
 using Features.Todo.Interfaces;
 using Features.Todo.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Features.Todo.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class TodoController : Controller
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    public class TodoController : ControllerBase
     {
         private readonly ITodoService _todoService;
 
@@ -22,7 +21,6 @@ namespace Features.Todo.Controllers
         {
             _todoService = todoService;
         }
-
 
         [HttpGet]
         public async Task<ActionResult<List<TodoResponseDto>>> GetAll()
@@ -38,7 +36,8 @@ namespace Features.Todo.Controllers
             var userId = GetUserId();
             var todo = await _todoService.GetTodoAsync(id, userId);
 
-            if (todo == null) return NotFound();
+            if (todo == null)
+                return NotFound();
             return Ok(todo);
         }
 
@@ -56,7 +55,8 @@ namespace Features.Todo.Controllers
             var userId = GetUserId();
             var todo = await _todoService.UpdateTodoAsync(id, updateDto, userId);
 
-            if (todo == null) return NotFound();
+            if (todo == null)
+                return NotFound();
             return Ok(todo);
         }
 
@@ -66,13 +66,13 @@ namespace Features.Todo.Controllers
             var userId = GetUserId();
             var deleted = await _todoService.DeleteTodoAsync(id, userId);
 
-            if (!deleted) return NotFound();
+            if (!deleted)
+                return NotFound();
             return NoContent();
         }
 
         private string GetUserId()
         {
-            // Gets userId from JWT token (same auth as main API)
             return User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                 ?? throw new UnauthorizedAccessException("User ID not found in token");
         }
