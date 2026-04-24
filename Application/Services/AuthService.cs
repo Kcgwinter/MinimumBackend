@@ -119,5 +119,13 @@ namespace Application.Services
 
             return tokenHandler.WriteToken(token);
         }
+
+        public Task<bool> LogoutAsync(UserLogoutDto logoutDto)
+        {
+            // In a stateless JWT authentication system, logout is typically handled on the client side
+            // by simply deleting the token.
+            // For demonstration purposes, we'll just return true to indicate a successful logout.
+            return Task.FromResult(true);
+        }
     }
 }

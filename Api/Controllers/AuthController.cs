@@ -46,5 +46,13 @@ namespace Api.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            // For JWT, logout is typically handled on the client side by deleting the token.
+            // Optionally, you can implement token blacklisting here.
+            return Ok(new { message = "Logged out successfully." });
+        }
     }
 }

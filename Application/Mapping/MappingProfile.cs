@@ -15,6 +15,7 @@ namespace Application.Mapping
             //User Mappings
             CreateMap<UserRegisterDto, User>();
             CreateMap<User, UserResponseDto>();
+            CreateMap<UserLogoutDto, User>();
         }
     }
 }
