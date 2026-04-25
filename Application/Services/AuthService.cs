@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -126,6 +127,42 @@ namespace Application.Services
             // by simply deleting the token.
             // For demonstration purposes, we'll just return true to indicate a successful logout.
             return Task.FromResult(true);
+        }
+
+        public async Task RequestPasswordResetAsync(string email)
+        {
+            var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
+            var user = _unitOfWork.Users.FindAsync(u => u.Email == email).Result.FirstOrDefault();
+            if (user == null)
+                throw new ApplicationException("Email not found");
+
+            user.PasswordResetToken = token;
+            user.PasswordResetTokenExpires = DateTime.UtcNow.AddHours(1);
+            _ = _unitOfWork.Users.UpdateAsync(user);
+            await _unitOfWork.CompleteAsync();
+
+            //Todo: Send email with token
+            Debug.WriteLine($"Password reset token for {email}: {token}");
+        }
+
+        public Task ResetPasswordAsync(PasswordResetRequestDto dto)
+        {
+            var user = _unitOfWork
+                .Users.FindAsync(u => u.PasswordResetToken == dto.Token)
+                .Result.FirstOrDefault();
+
+            if (user == null || user.PasswordResetTokenExpires < DateTime.UtcNow)
+                throw new ApplicationException("Invalid or expired token");
+
+            CreatePasswordHash(dto.NewPassword, out byte[] passwordHash, out byte[] passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            user.PasswordResetToken = null;
+            user.PasswordResetTokenExpires = null;
+
+            _ = _unitOfWork.Users.UpdateAsync(user);
+            return _unitOfWork.CompleteAsync();
         }
     }
 }

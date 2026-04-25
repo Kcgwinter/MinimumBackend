@@ -44,4 +44,21 @@ namespace Core.DTOs
         public string Email { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
     }
+
+    public class PasswordForgotRequestDto
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+    }
+
+    public class PasswordResetRequestDto
+    {
+        [Required]
+        public string Token { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
+        public string NewPassword { get; set; } = string.Empty;
+    }
 }

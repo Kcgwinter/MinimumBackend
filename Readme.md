@@ -18,8 +18,8 @@
 * [ ] Authentication & Authorization
   * [ ] Core Auth
     * [X] JWT Bearer Token (Authentication)
-    * [ ] User Registration/ Login / Logout endpoints
-    * [ ] Password Reset/ Password Forgot endpoints
+    * [X] User Registration/ Login / Logout endpoints
+    * [X] Password Reset/ Password Forgot endpoints
     * [ ] Email Confirmation System
     * [ ] Refresh Token mechanism
     * [ ] Role-Base Access Control

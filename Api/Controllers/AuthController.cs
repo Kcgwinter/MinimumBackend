@@ -54,5 +54,19 @@ namespace Api.Controllers
             // Optionally, you can implement token blacklisting here.
             return Ok(new { message = "Logged out successfully." });
         }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(PasswordForgotRequestDto dto)
+        {
+            await _authService.RequestPasswordResetAsync(dto.Email);
+            return Ok(new { message = "If that email exists, a reset link has been sent." });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(PasswordResetRequestDto dto)
+        {
+            await _authService.ResetPasswordAsync(dto);
+            return Ok(new { message = "Password has been reset successfully." });
+        }
     }
 }
