@@ -1,4 +1,5 @@
 using System.Text;
+using Api.Middleware;
 using Application.Interfaces;
 using Application.Services;
 using Core.Interfaces;
@@ -89,6 +90,7 @@ var app = builder.Build();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseMiddleware<LoggingMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 

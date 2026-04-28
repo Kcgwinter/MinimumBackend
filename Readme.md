@@ -7,7 +7,7 @@
   * [X] Dependency Injection
   * [X] Configuration Management (appsettings.json, .env file)
   * [X] global exception handling
-  * [ ] request and response logging
+  * [X] request and response logging
   * [X] Health Check Endpoints (for DB and other Services)
 
 * [ ] Project Organization
