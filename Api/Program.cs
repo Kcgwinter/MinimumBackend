@@ -91,6 +91,7 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseMiddleware<LoggingMiddleware>();
+app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 
