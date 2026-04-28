@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Repositories
 {
     public class Repository<T>(AppDbContext context) : IRepository<T>
-        where T : class
+        where T : BaseEntity
     {
         protected readonly AppDbContext _context = context;
         protected readonly DbSet<T> _dbSet = context.Set<T>();
@@ -22,7 +23,7 @@ namespace Infrastructure.Repositories
 
         public async Task<T?> GetByIdAsync(int id)
         {
-            return await _dbSet.FindAsync(id);
+            return await _dbSet.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
         }
 
         public async Task<T> AddAsync(T entity)
@@ -39,6 +40,22 @@ namespace Infrastructure.Repositories
         }
 
         public async Task DeleteAsync(T entity)
+        {
+            if (entity is BaseEntity baseEntity)
+            {
+                baseEntity.IsDeleted = true;
+                baseEntity.DeletedAt = DateTime.UtcNow;
+                _dbSet.Update(entity);
+            }
+            else
+            {
+                _dbSet.Remove(entity);
+            }
+            await _context.SaveChangesAsync();
+        }
+
+        /// Permanently deletes the entity from the database, bypassing soft delete.
+        public async Task ForceDeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();

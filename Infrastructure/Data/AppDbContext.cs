@@ -22,6 +22,7 @@ namespace Infrastructure.Data
                 entity.HasIndex(u => u.Username).IsUnique();
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
+                entity.HasQueryFilter(u => !u.IsDeleted); //global query filter to exclude soft-deleted entities
             });
         }
     }

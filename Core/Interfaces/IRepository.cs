@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Core.Entities;
 
 namespace Core.Interfaces
 {
     public interface IRepository<T>
-        where T : class
+        where T : BaseEntity
     {
         Task<List<T>> GetAllAsync();
         Task<T?> GetByIdAsync(int id);

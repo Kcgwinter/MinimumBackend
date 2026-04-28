@@ -33,7 +33,7 @@
   * [X] Code-First Migration
   * [X] Generic Repository Implementation
   * [X] Unit of Work Pattern
-  * [ ] Database Initial Seeding
+  * [X] Database Initial Seeding
   * [ ] Soft Delete
   * [ ] Audit Fields Interface
   * [ ] Database Health Checks
