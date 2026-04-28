@@ -25,5 +25,23 @@ namespace Infrastructure.Data
                 entity.HasQueryFilter(u => !u.IsDeleted); //global query filter to exclude soft-deleted entities
             });
         }
+
+        // Override SaveChangesAsync to automatically set CreatedAt and UpdatedAt timestamps and handle soft delete logic
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+            {
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                }
+                else if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
     }
 }
