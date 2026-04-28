@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 
@@ -105,6 +107,9 @@ builder.Services.AddRateLimiter(options =>
     );
 });
 
+// Uses AddDBContextCheck to add health checks for the database contexts
+builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
+
 var app = builder.Build();
 
 app.UseCors("AllowAll");
@@ -115,6 +120,8 @@ app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 app.UseRateLimiter();
+
+app.MapHealthChecks("/health");
 
 // Ensure database is created and migrations applied
 using (var scope = app.Services.CreateScope())

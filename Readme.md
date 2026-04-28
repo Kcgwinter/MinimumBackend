@@ -36,7 +36,7 @@
   * [X] Database Initial Seeding
   * [X] Soft Delete
   * [X] Audit Fields Interface
-  * [ ] Database Health Checks
+  * [X] Database Health Checks
 * [ ] Data Features
   * [ ] Support Multiple Database Systems (MSSQL, Postgres, SQLite)
   * [ ] Connection String Management per ENV

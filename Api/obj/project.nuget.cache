@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vnyCcD8xPq8=",
+  "dgSpecHash": "oKSaQmp/y2Q=",
   "success": true,
   "projectFilePath": "F:\\Dev\\MinimumBackend\\Api\\Api.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,8 @@
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\10.0.6\\microsoft.entityframeworkcore.sqlserver.10.0.6.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\10.0.6\\microsoft.entityframeworkcore.tools.10.0.6.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.6\\microsoft.extensions.dependencymodel.10.0.6.nupkg.sha512",
+    "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\10.0.6\\microsoft.extensions.diagnostics.healthchecks.10.0.6.nupkg.sha512",
+    "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore\\10.0.6\\microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.10.0.6.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.identity.client\\4.73.1\\microsoft.identity.client.4.73.1.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.identity.client.extensions.msal\\4.73.1\\microsoft.identity.client.extensions.msal.4.73.1.nupkg.sha512",
     "C:\\Users\\kcgwi\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.0.1\\microsoft.identitymodel.abstractions.8.0.1.nupkg.sha512",
@@ -69,6 +71,18 @@
     "C:\\Users\\kcgwi\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference Microsoft.Extensions.Diagnostics.HealthChecks will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "projectPath": "F:\\Dev\\MinimumBackend\\Api\\Api.csproj",
+      "warningLevel": 1,
+      "filePath": "F:\\Dev\\MinimumBackend\\Api\\Api.csproj",
+      "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
     {
       "code": "NU1903",
       "level": "Warning",
