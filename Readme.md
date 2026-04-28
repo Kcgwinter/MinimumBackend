@@ -34,8 +34,8 @@
   * [X] Generic Repository Implementation
   * [X] Unit of Work Pattern
   * [X] Database Initial Seeding
-  * [ ] Soft Delete
-  * [ ] Audit Fields Interface
+  * [X] Soft Delete
+  * [X] Audit Fields Interface
   * [ ] Database Health Checks
 * [ ] Data Features
   * [ ] Support Multiple Database Systems (MSSQL, Postgres, SQLite)

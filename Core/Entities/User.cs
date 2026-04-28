@@ -12,8 +12,6 @@ namespace Core.Entities
         public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
         public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
         public string Role { get; set; } = "User";
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTokenExpires { get; set; }
