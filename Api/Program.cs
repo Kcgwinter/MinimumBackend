@@ -1,7 +1,9 @@
 using System.Text;
+using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
 using Application.Services;
+using AspNetCoreRateLimit;
 using Core.Interfaces;
 using Features.Todo;
 using Features.Todo.Data;
@@ -85,6 +87,24 @@ builder.Services.AddCors(options =>
     );
 });
 
+// Configure rate limiting
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: httpContext.User.Identity?.Name
+                ?? httpContext.Request.Headers.Host.ToString(),
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                AutoReplenishment = true,
+                PermitLimit = 10,
+                QueueLimit = 0,
+                Window = TimeSpan.FromMinutes(1),
+            }
+        )
+    );
+});
+
 var app = builder.Build();
 
 app.UseCors("AllowAll");
@@ -94,6 +114,7 @@ app.UseMiddleware<LoggingMiddleware>();
 app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
+app.UseRateLimiter();
 
 // Ensure database is created and migrations applied
 using (var scope = app.Services.CreateScope())

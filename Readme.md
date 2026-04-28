@@ -28,7 +28,7 @@
     * [X] secure password hashing
     * [X] CORS protection headers
     * [X] CSRF protection
-    * [ ] Rate Limiting on auth endpoints --> AspNetCoreRateLimit
+    * [X] Rate Limiting on auth endpoints --> AspNetCoreRateLimit
 * [ ] Data Access & Database
   * [X] Code-First Migration
   * [X] Generic Repository Implementation
