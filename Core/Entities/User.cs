@@ -10,5 +10,8 @@ namespace Core.Entities
         public bool IsActive { get; set; } = true;
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTokenExpires { get; set; }
+        public bool EmailConfirmed { get; set; } = false;
+        public string? EmailConfirmationToken { get; set; }
+        public DateTime? EmailConfirmationTokenExpires { get; set; }
     }
 }

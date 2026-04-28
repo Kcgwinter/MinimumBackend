@@ -64,5 +64,12 @@ namespace Api.Controllers
             await _authService.ResetPasswordAsync(dto);
             return Ok(new { message = "Password has been reset successfully." });
         }
+
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string token)
+        {
+            await _authService.ConfirmEmailAsync(token);
+            return Ok(new { message = "Email confirmed successfully." });
+        }
     }
 }

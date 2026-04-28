@@ -43,12 +43,20 @@ namespace Application.Services
                 Email = registerDto.Email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
+                EmailConfirmed = false,
+                EmailConfirmationToken = GenerateEmailConfirmationToken(),
+                EmailConfirmationTokenExpires = DateTime.UtcNow.AddHours(24),
             };
 
             await _unitOfWork.Users.AddAsync(user);
             await _unitOfWork.CompleteAsync();
 
             return _mapper.Map<UserResponseDto>(user);
+        }
+
+        private string GenerateEmailConfirmationToken()
+        {
+            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
         }
 
         public async Task<string> LoginAsync(UserLoginDto loginDto)
@@ -62,6 +70,9 @@ namespace Application.Services
                 || !VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt)
             )
                 throw new ApplicationException("Invalid credentials");
+
+            if (!user.EmailConfirmed)
+                throw new ApplicationException("Email not confirmed");
 
             return CreateToken(user);
         }
@@ -157,6 +168,35 @@ namespace Application.Services
             user.PasswordResetToken = null;
             user.PasswordResetTokenExpires = null;
 
+            _ = _unitOfWork.Users.UpdateAsync(user);
+            return _unitOfWork.CompleteAsync();
+        }
+
+        public Task ConfirmEmailAsync(string token)
+        {
+            var user = _unitOfWork
+                .Users.FindAsync(u => u.EmailConfirmationToken == token)
+                .Result.FirstOrDefault();
+
+            if (user == null || user.EmailConfirmationTokenExpires < DateTime.UtcNow)
+                throw new ApplicationException("Invalid or expired token");
+
+            user.EmailConfirmed = true;
+            user.EmailConfirmationToken = null;
+            user.EmailConfirmationTokenExpires = null;
+
+            _ = _unitOfWork.Users.UpdateAsync(user);
+            return _unitOfWork.CompleteAsync();
+        }
+
+        public Task RequestEmailConfirmationAsync(string email)
+        {
+            var user = _unitOfWork.Users.FindAsync(u => u.Email == email).Result.FirstOrDefault();
+            if (user == null)
+                throw new ApplicationException("Email not found");
+
+            user.EmailConfirmationToken = GenerateEmailConfirmationToken();
+            user.EmailConfirmationTokenExpires = DateTime.UtcNow.AddHours(24);
             _ = _unitOfWork.Users.UpdateAsync(user);
             return _unitOfWork.CompleteAsync();
         }

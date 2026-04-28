@@ -1,7 +1,6 @@
 ## Features
 
-* [ ] Core Foundation
-
+* [X] Core Foundation
   * [X] Layered Architecture ( API -> Core -> Infrastructure -> Shared)
   * [X] ASP.Net Core Web API (Dotnet 10)
   * [X] Dependency Injection
@@ -9,10 +8,9 @@
   * [X] global exception handling
   * [X] request and response logging
   * [X] Health Check Endpoints (for DB and other Services)
-
-* [ ] Project Organization
+* [X] Project Organization
   * [X] Solution File
-  * [ ] Global Usings
+  * [-] Global Usings //Not Implemented in 1.0, reason Validation which usings are really needed
   * [X] API Versioning Support
   * [X] CORS Configuration for Frontend
 * [ ] Authentication & Authorization

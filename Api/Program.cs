@@ -3,6 +3,7 @@ using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
 using Application.Services;
+using Application.Settings;
 using Core.Interfaces;
 using Features.Todo;
 using Features.Todo.Data;
@@ -51,6 +52,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Configure Dependency Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddHttpContextAccessor();
 
 // Configure AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -106,6 +109,9 @@ builder.Services.AddRateLimiter(options =>
 
 // Uses AddDBContextCheck to add health checks for the database contexts
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
+
+//Add SMTP Service
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
 var app = builder.Build();
 
