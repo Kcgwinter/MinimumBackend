@@ -25,9 +25,8 @@
     * [ ] Role-Base Access Control
   * [ ] Security
     * [X] Password Policy enforcement
-    * [ ] account logout after multiple attempts
     * [X] secure password hashing
-    * [ ] xxs protection headers
+    * [X] CORS protection headers
     * [ ] CSRF protection
     * [ ] Rate Limiting on auth endpoints
 * [ ] Data Access & Database
