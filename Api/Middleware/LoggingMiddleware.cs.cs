@@ -1,5 +1,3 @@
-using System;
-
 namespace Api.Middleware;
 
 public class LoggingMiddleware

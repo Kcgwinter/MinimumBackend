@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Features.Todo.Controllers;
 using Features.Todo.Data;
 using Features.Todo.Interfaces;

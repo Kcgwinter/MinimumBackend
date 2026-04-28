@@ -3,7 +3,6 @@ using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
 using Application.Services;
-using AspNetCoreRateLimit;
 using Core.Interfaces;
 using Features.Todo;
 using Features.Todo.Data;
@@ -12,8 +11,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 

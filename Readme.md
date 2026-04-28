@@ -50,7 +50,7 @@
   * [ ] API Features
     * [X] Swagger / OpenAPI
     * [ ] XML Comments
-    * [ ] DTOs
+    * [X] DTOs
     * [X] AutoMapper
     * [ ] Model Validation
     * [ ] Content Negotiation
@@ -96,7 +96,6 @@
     * [ ] Invoice Generation
 
 ## Phase Programming
-
 * [ ] Phase 1
   * [ ] Architecture (Base API calls possible)
   * [ ] Database Setup
@@ -114,9 +113,6 @@
 * [ ] Phase 4
   * [ ] Admin Panel (Tenancy Overall)
   * [ ] Admin Panel (per Tenant)
-  * [ ]
-
-
 
 //Create Solution File
 dotnet new sln

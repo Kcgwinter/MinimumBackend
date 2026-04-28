@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Features.Todo.DTOs;
 using Features.Todo.Interfaces;
-using Features.Todo.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Features.Todo.Controllers
