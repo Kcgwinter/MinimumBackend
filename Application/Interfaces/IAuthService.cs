@@ -5,7 +5,9 @@ namespace Application.Interfaces
     public interface IAuthService
     {
         Task<UserResponseDto> RegisterAsync(UserRegisterDto registerDto);
-        Task<string> LoginAsync(UserLoginDto loginDto);
+        Task<(string accessToken, string refreshToken)> LoginAsync(UserLoginDto loginDto);
+        Task<(string accessToken, string refreshToken)> LoginWithRefreshAsync(string refreshToken);
+
         Task<bool> UserExistsAsync(string username);
         Task<bool> LogoutAsync(UserLogoutDto logoutDto);
         Task RequestPasswordResetAsync(string email);

@@ -9,10 +9,13 @@ namespace Infrastructure.Data
         private readonly AppDbContext _dbContext;
         public IRepository<User> Users { get; private set; }
 
+        public IRepository<RefreshToken> RefreshTokens { get; private set; }
+
         public UnitOfWork(AppDbContext dbContext)
         {
             _dbContext = dbContext;
             Users = new Repository<User>(_dbContext);
+            RefreshTokens = new Repository<RefreshToken>(_dbContext);
         }
 
         public async Task<int> CompleteAsync()

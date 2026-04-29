@@ -14,5 +14,6 @@ namespace Core.Interfaces
         Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null!);
         Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<T?> FindFirstAsync(Expression<Func<T, bool>> predicate);
     }
 }

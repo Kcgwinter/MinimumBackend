@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Application.Interfaces;
 using Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,21 @@ namespace Api.Controllers
             {
                 var token = await _authService.LoginAsync(loginDto);
                 return Ok(new { token });
+            }
+            catch (ApplicationException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpPost("login-with-refresh")]
+        public async Task<ActionResult> LoginWithRefresh(string RefreshToken)
+        {
+            Debug.WriteLine("Login with refresh attempt received.");
+            try
+            {
+                var newToken = await _authService.LoginWithRefreshAsync(RefreshToken);
+                return Ok(new { token = newToken });
             }
             catch (ApplicationException ex)
             {

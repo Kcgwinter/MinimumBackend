@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities;
 
-public class RefreshToken
+public class RefreshToken : BaseEntity
 {
-    [Key]
-    public Guid Guid { get; set; }
     public string Token { get; set; } = "";
     public int UserId { get; set; }
     public DateTime Expires { get; set; }

@@ -14,6 +14,6 @@ namespace Core.Entities
         public string? EmailConfirmationToken { get; set; }
         public DateTime? EmailConfirmationTokenExpires { get; set; }
 
-        public List<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+        public RefreshToken? RefreshToken { get; set; }
     }
 }

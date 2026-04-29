@@ -61,7 +61,9 @@ namespace Application.Services
             return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
         }
 
-        public async Task<Response> LoginAsync(UserLoginDto loginDto)
+        public async Task<(string accessToken, string refreshToken)> LoginAsync(
+            UserLoginDto loginDto
+        )
         {
             var user = (
                 await _unitOfWork.Users.FindAsync(u => u.Username == loginDto.Username)
@@ -76,7 +78,51 @@ namespace Application.Services
             if (!user.EmailConfirmed)
                 throw new ApplicationException("Email not confirmed");
 
-            return CreateToken(user);
+            var refreshToken = new RefreshToken
+            {
+                Token = GenerateRefreshToken(),
+                UserId = user.Id,
+                User = user,
+                Expires = DateTime.UtcNow.AddDays(7),
+            };
+
+            await _unitOfWork.RefreshTokens.AddAsync(refreshToken);
+            await _unitOfWork.CompleteAsync();
+
+            return (CreateToken(user), refreshToken.Token);
+        }
+
+        public async Task<(string accessToken, string refreshToken)> LoginWithRefreshAsync(
+            string refreshToken
+        )
+        {
+            var existingToken = await _unitOfWork.RefreshTokens.FindFirstAsync(rt =>
+                rt.Token == refreshToken
+            );
+            if (existingToken == null || existingToken.Expires < DateTime.UtcNow)
+                throw new ApplicationException("Invalid or expired refresh token");
+
+            var user = await _unitOfWork.Users.GetByIdAsync(existingToken.UserId);
+            if (user == null)
+                throw new ApplicationException("User not found");
+
+            // Revoke the old refresh token
+            existingToken.Expires = DateTime.UtcNow; // Mark as expired
+            await _unitOfWork.RefreshTokens.UpdateAsync(existingToken);
+
+            // Generate a new refresh token
+            var newRefreshToken = new RefreshToken
+            {
+                Token = GenerateRefreshToken(),
+                UserId = user.Id,
+                User = user,
+                Expires = DateTime.UtcNow.AddDays(7),
+            };
+
+            await _unitOfWork.RefreshTokens.AddAsync(newRefreshToken);
+            await _unitOfWork.CompleteAsync();
+
+            return (CreateToken(user), newRefreshToken.Token);
         }
 
         public async Task<bool> UserExistsAsync(string username)

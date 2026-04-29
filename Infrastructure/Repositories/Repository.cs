@@ -22,6 +22,13 @@ namespace Infrastructure.Repositories
             return await _dbSet.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
         }
 
+        public async Task<T?> FindFirstAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.FirstOrDefaultAsync(e =>
+                !e.IsDeleted && predicate.Compile().Invoke(e)
+            );
+        }
+
         public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
