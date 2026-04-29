@@ -18,7 +18,7 @@
     * [X] JWT Bearer Token (Authentication)
     * [X] User Registration/ Login / Logout endpoints
     * [X] Password Reset/ Password Forgot endpoints
-    * [ ] Email Confirmation System
+    * [X] Email Confirmation System
     * [ ] Refresh Token mechanism
     * [ ] Role-Base Access Control
   * [ ] Security
@@ -31,7 +31,6 @@
   * [X] Code-First Migration
   * [X] Generic Repository Implementation
   * [X] Unit of Work Pattern
-  * [X] Database Initial Seeding
   * [X] Soft Delete
   * [X] Audit Fields Interface
   * [X] Database Health Checks
@@ -57,7 +56,7 @@
 
 * [ ] Core Services
   * [ ] Essentials
-    * [ ] Email Service (smtp)
+    * [X] Email Service (smtp)
     * [ ] File Storage Service (local + cloud)
     * [ ] Caching (Memory Cache + Redis)
     * [ ] Background Job Service
@@ -145,3 +144,8 @@ DTOs							// Create DTO(return Object on regular request)
 Create Mapper Model - DTOs
 Controller						// API Entry point, inherit BaseAPIController
 
+
+## DB Migrations
+dotnet ef database update --project ./Infrastructure --startup-project ./Api --context AppDbContext
+
+dotnet ef migrations add AuthUpdate --project ./Infrastructure --startup-project ./Api --context AppDbContext 

@@ -19,6 +19,8 @@ namespace Application.Services
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
 
+        public sealed record Response(string AccessToken, string RefreshToken);
+
         public AuthService(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
@@ -59,7 +61,7 @@ namespace Application.Services
             return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
         }
 
-        public async Task<string> LoginAsync(UserLoginDto loginDto)
+        public async Task<Response> LoginAsync(UserLoginDto loginDto)
         {
             var user = (
                 await _unitOfWork.Users.FindAsync(u => u.Username == loginDto.Username)
@@ -116,7 +118,7 @@ namespace Application.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = creds,
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
@@ -127,6 +129,59 @@ namespace Application.Services
 
             return tokenHandler.WriteToken(token);
         }
+
+        //TODO
+        public string GenerateRefreshToken()
+        {
+            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+        }
+
+        // public async Task<string> RefreshTokenAsync(string token)
+        // {
+        //     var tokenHandler = new JwtSecurityTokenHandler();
+        //     var principal = tokenHandler.ValidateToken(
+        //         token,
+        //         new TokenValidationParameters
+        //         {
+        //             ValidateIssuer = true,
+        //             ValidateAudience = true,
+        //             ValidateLifetime = true, // Ensure expired tokens are rejected
+        //             ValidateIssuerSigningKey = true,
+        //             ValidIssuer = _configuration["Jwt:Issuer"],
+        //             ValidAudience = _configuration["Jwt:Audience"],
+        //             IssuerSigningKey = new SymmetricSecurityKey(
+        //                 Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)
+        //             ),
+        //         },
+        //         out SecurityToken validatedToken
+        //     );
+
+        //     if (
+        //         validatedToken is not JwtSecurityToken jwtToken
+        //         || !jwtToken.Header.Alg.Equals(
+        //             SecurityAlgorithms.HmacSha512,
+        //             StringComparison.InvariantCultureIgnoreCase
+        //         )
+        //     )
+        //         throw new ApplicationException("Invalid token");
+
+        //     var userId = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //     if (userId == null)
+        //         throw new ApplicationException("Invalid token");
+
+        //     // Check if the refresh token is valid and not revoked
+        //     var refreshToken = await _unitOfWork.RefreshTokens.GetAsync(userId, token);
+        //     if (refreshToken == null || refreshToken.IsRevoked)
+        //         throw new ApplicationException("Invalid or revoked refresh token");
+
+        //     // Revoke the current refresh token
+        //     refreshToken.IsRevoked = true;
+        //     await _unitOfWork.RefreshTokens.UpdateAsync(refreshToken);
+        //     await _unitOfWork.CompleteAsync();
+
+        //     // Generate a new JWT token
+        //     return CreateToken(refreshToken.User);
+        // }
 
         public Task<bool> LogoutAsync(UserLogoutDto logoutDto)
         {

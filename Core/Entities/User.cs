@@ -13,5 +13,7 @@ namespace Core.Entities
         public bool EmailConfirmed { get; set; } = false;
         public string? EmailConfirmationToken { get; set; }
         public DateTime? EmailConfirmationTokenExpires { get; set; }
+
+        public List<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }
