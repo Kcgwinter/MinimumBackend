@@ -19,7 +19,7 @@
     * [X] User Registration/ Login / Logout endpoints
     * [X] Password Reset/ Password Forgot endpoints
     * [X] Email Confirmation System
-    * [?] Refresh Token mechanism
+    * [X] Refresh Token mechanism
     * [ ] Role-Base Access Control
   * [X] Security
     * [X] Password Policy enforcement
