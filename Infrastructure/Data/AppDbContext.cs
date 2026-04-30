@@ -1,4 +1,5 @@
 using Core.Entities;
+using Infrastructure.DBSets;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -14,14 +15,21 @@ namespace Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasIndex(u => u.Email).IsUnique();
-                entity.HasIndex(u => u.Username).IsUnique();
-                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
-                entity.HasQueryFilter(u => !u.IsDeleted); //global query filter to exclude soft-deleted entities
-            });
+            modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            modelBuilder
+                .Entity<Permission>()
+                .HasData(
+                    new Permission { Id = 1, Name = "CreateUser" },
+                    new Permission { Id = 2, Name = "EditUser" },
+                    new Permission { Id = 3, Name = "DeleteUser" },
+                    new Permission { Id = 4, Name = "ViewUser" }
+                );
+
+            modelBuilder
+                .Entity<Role>()
+                .HasData(new Role { Id = 1, Name = "Admin" }, new Role { Id = 2, Name = "User" });
         }
 
         // Override SaveChangesAsync to automatically set CreatedAt and UpdatedAt timestamps and handle soft delete logic
