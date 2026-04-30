@@ -182,53 +182,6 @@ namespace Application.Services
             return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
         }
 
-        // public async Task<string> RefreshTokenAsync(string token)
-        // {
-        //     var tokenHandler = new JwtSecurityTokenHandler();
-        //     var principal = tokenHandler.ValidateToken(
-        //         token,
-        //         new TokenValidationParameters
-        //         {
-        //             ValidateIssuer = true,
-        //             ValidateAudience = true,
-        //             ValidateLifetime = true, // Ensure expired tokens are rejected
-        //             ValidateIssuerSigningKey = true,
-        //             ValidIssuer = _configuration["Jwt:Issuer"],
-        //             ValidAudience = _configuration["Jwt:Audience"],
-        //             IssuerSigningKey = new SymmetricSecurityKey(
-        //                 Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)
-        //             ),
-        //         },
-        //         out SecurityToken validatedToken
-        //     );
-
-        //     if (
-        //         validatedToken is not JwtSecurityToken jwtToken
-        //         || !jwtToken.Header.Alg.Equals(
-        //             SecurityAlgorithms.HmacSha512,
-        //             StringComparison.InvariantCultureIgnoreCase
-        //         )
-        //     )
-        //         throw new ApplicationException("Invalid token");
-
-        //     var userId = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //     if (userId == null)
-        //         throw new ApplicationException("Invalid token");
-
-        //     // Check if the refresh token is valid and not revoked
-        //     var refreshToken = await _unitOfWork.RefreshTokens.GetAsync(userId, token);
-        //     if (refreshToken == null || refreshToken.IsRevoked)
-        //         throw new ApplicationException("Invalid or revoked refresh token");
-
-        //     // Revoke the current refresh token
-        //     refreshToken.IsRevoked = true;
-        //     await _unitOfWork.RefreshTokens.UpdateAsync(refreshToken);
-        //     await _unitOfWork.CompleteAsync();
-
-        //     // Generate a new JWT token
-        //     return CreateToken(refreshToken.User);
-        // }
-
         public Task<bool> LogoutAsync(UserLogoutDto logoutDto)
         {
             // In a stateless JWT authentication system, logout is typically handled on the client side
