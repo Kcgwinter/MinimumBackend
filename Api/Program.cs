@@ -131,7 +131,8 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
     dbContext.Database.EnsureCreated();
-    dbTodoContext.Database.EnsureCreated();
+
+    await DBInitializer.SeedAsync(dbContext);
 }
 
 // Configure the HTTP request pipeline.

@@ -42,6 +42,8 @@
   * [ ] Pagination helper
   * [ ] Filtering/Sorting
   * [ ] Bulk Operations
+  * [X] DBInitializer
+
 
 * [ ] API Quality & Documentation
   * [ ] API Features
