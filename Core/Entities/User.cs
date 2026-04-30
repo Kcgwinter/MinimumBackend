@@ -6,7 +6,6 @@ namespace Core.Entities
         public string Email { get; set; } = string.Empty;
         public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
         public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
-        public string Role { get; set; } = "User";
         public bool IsActive { get; set; } = true;
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTokenExpires { get; set; }
@@ -15,6 +14,6 @@ namespace Core.Entities
         public DateTime? EmailConfirmationTokenExpires { get; set; }
 
         public RefreshToken? RefreshToken { get; set; }
-        public List<Role> Roles { get; set; } = new List<Role>();
+        public ICollection<Role> Roles { get; set; } = new List<Role>();
     }
 }

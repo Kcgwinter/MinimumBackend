@@ -11,80 +11,77 @@ namespace Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_RefreshTokens",
-                table: "RefreshTokens");
+            migrationBuilder.DropPrimaryKey(name: "PK_RefreshTokens", table: "RefreshTokens");
 
             migrationBuilder.RenameColumn(
                 name: "Guid",
                 table: "RefreshTokens",
-                newName: "CreatedAt");
+                newName: "CreatedAt"
+            );
 
-            migrationBuilder.AddColumn<int>(
-                name: "Id",
-                table: "RefreshTokens",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0)
+            migrationBuilder
+                .AddColumn<int>(
+                    name: "Id",
+                    table: "RefreshTokens",
+                    type: "INTEGER",
+                    nullable: false,
+                    defaultValue: 0
+                )
                 .Annotation("Sqlite:Autoincrement", true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "DeletedAt",
                 table: "RefreshTokens",
                 type: "TEXT",
-                nullable: true);
+                nullable: true
+            );
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsDeleted",
                 table: "RefreshTokens",
                 type: "INTEGER",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: false
+            );
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "UpdatedAt",
                 table: "RefreshTokens",
                 type: "TEXT",
-                nullable: true);
+                nullable: true
+            );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_RefreshTokens",
                 table: "RefreshTokens",
-                column: "Id");
+                column: "Id"
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_RefreshTokens",
-                table: "RefreshTokens");
+            migrationBuilder.DropPrimaryKey(name: "PK_RefreshTokens", table: "RefreshTokens");
 
-            migrationBuilder.DropColumn(
-                name: "Id",
-                table: "RefreshTokens");
+            migrationBuilder.DropColumn(name: "Id", table: "RefreshTokens");
 
-            migrationBuilder.DropColumn(
-                name: "DeletedAt",
-                table: "RefreshTokens");
+            migrationBuilder.DropColumn(name: "DeletedAt", table: "RefreshTokens");
 
-            migrationBuilder.DropColumn(
-                name: "IsDeleted",
-                table: "RefreshTokens");
+            migrationBuilder.DropColumn(name: "IsDeleted", table: "RefreshTokens");
 
-            migrationBuilder.DropColumn(
-                name: "UpdatedAt",
-                table: "RefreshTokens");
+            migrationBuilder.DropColumn(name: "UpdatedAt", table: "RefreshTokens");
 
             migrationBuilder.RenameColumn(
                 name: "CreatedAt",
                 table: "RefreshTokens",
-                newName: "Guid");
+                newName: "Guid"
+            );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_RefreshTokens",
                 table: "RefreshTokens",
-                column: "Guid");
+                column: "Guid"
+            );
         }
     }
 }

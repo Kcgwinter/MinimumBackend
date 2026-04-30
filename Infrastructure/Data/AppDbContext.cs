@@ -17,19 +17,6 @@ namespace Infrastructure.Data
 
             modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-
-            modelBuilder
-                .Entity<Permission>()
-                .HasData(
-                    new Permission { Id = 1, Name = "CreateUser" },
-                    new Permission { Id = 2, Name = "EditUser" },
-                    new Permission { Id = 3, Name = "DeleteUser" },
-                    new Permission { Id = 4, Name = "ViewUser" }
-                );
-
-            modelBuilder
-                .Entity<Role>()
-                .HasData(new Role { Id = 1, Name = "Admin" }, new Role { Id = 2, Name = "User" });
         }
 
         // Override SaveChangesAsync to automatically set CreatedAt and UpdatedAt timestamps and handle soft delete logic

@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260430030558_Create_MtoNConntection")]
+    partial class Create_MtoNConntection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.6");
@@ -45,6 +48,36 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(4148),
+                            IsDeleted = false,
+                            Name = "CreateUser"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(4530),
+                            IsDeleted = false,
+                            Name = "EditUser"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(4531),
+                            IsDeleted = false,
+                            Name = "DeleteUser"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(4542),
+                            IsDeleted = false,
+                            Name = "ViewUser"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.RefreshToken", b =>
@@ -67,7 +100,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Token")
                         .IsRequired()
-                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -76,17 +108,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("Token")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1")
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("RefreshTokens");
@@ -117,6 +141,22 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(9608),
+                            IsDeleted = false,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2026, 4, 30, 3, 5, 58, 372, DateTimeKind.Utc).AddTicks(9901),
+                            IsDeleted = false,
+                            Name = "User"
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.User", b =>
@@ -217,14 +257,10 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.RefreshToken", b =>
                 {
                     b.HasOne("Core.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("RefreshToken")
+                        .HasForeignKey("Core.Entities.RefreshToken", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Core.Entities.User", null)
-                        .WithOne("RefreshToken")
-                        .HasForeignKey("Core.Entities.RefreshToken", "UserId1");
 
                     b.Navigation("User");
                 });
