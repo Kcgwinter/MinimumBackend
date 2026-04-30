@@ -15,5 +15,6 @@ namespace Core.Entities
         public DateTime? EmailConfirmationTokenExpires { get; set; }
 
         public RefreshToken? RefreshToken { get; set; }
+        public List<Role> Roles { get; set; } = new List<Role>();
     }
 }
