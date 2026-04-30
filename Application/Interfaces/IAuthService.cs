@@ -15,5 +15,6 @@ namespace Application.Interfaces
         Task ConfirmEmailAsync(string token);
 
         Task RequestEmailConfirmationAsync(string email);
+        Task RevokeRefreshTokenAsync(string refreshToken);
     }
 }

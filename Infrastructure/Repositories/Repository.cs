@@ -67,6 +67,9 @@ namespace Infrastructure.Repositories
         public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate) =>
             await _dbSet.AnyAsync(predicate);
 
+        public async Task<bool> DeletedExistsAsync(Expression<Func<T, bool>> predicate) =>
+            await _dbSet.AnyAsync(e => e.IsDeleted && predicate.Compile().Invoke(e));
+
         public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null!) =>
             predicate == null ? await _dbSet.CountAsync() : await _dbSet.CountAsync(predicate);
 

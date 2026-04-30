@@ -176,10 +176,27 @@ namespace Application.Services
             return tokenHandler.WriteToken(token);
         }
 
-        //TODO
         public string GenerateRefreshToken()
         {
             return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+        }
+
+        public Task RevokeRefreshTokenAsync(string refreshToken)
+        {
+            var token = _unitOfWork
+                .RefreshTokens.FindFirstAsync(rt => rt.Token == refreshToken)
+                .Result;
+            if (token != null)
+            {
+                var userTokens = _unitOfWork.Users.FindAsync(u => u.Id == token.UserId);
+                _unitOfWork.RefreshTokens.DeletedExistsAsync(rt => rt.UserId == token.UserId);
+
+                token.Expires = DateTime.UtcNow; // Mark as expired
+                _ = _unitOfWork.RefreshTokens.UpdateAsync(token);
+                return _unitOfWork.CompleteAsync();
+            }
+
+            throw new ApplicationException("Refresh token not found");
         }
 
         public Task<bool> LogoutAsync(UserLogoutDto logoutDto)

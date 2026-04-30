@@ -19,15 +19,15 @@
     * [X] User Registration/ Login / Logout endpoints
     * [X] Password Reset/ Password Forgot endpoints
     * [X] Email Confirmation System
-    * [ ] Refresh Token mechanism
+    * [?] Refresh Token mechanism
     * [ ] Role-Base Access Control
-  * [ ] Security
+  * [X] Security
     * [X] Password Policy enforcement
     * [X] secure password hashing
     * [X] CORS protection headers
     * [X] CSRF protection
     * [X] Rate Limiting on auth endpoints --> AspNetCoreRateLimit
-* [ ] Data Access & Database
+* [X] Data Access & Database
   * [X] Code-First Migration
   * [X] Generic Repository Implementation
   * [X] Unit of Work Pattern

@@ -44,7 +44,7 @@ namespace Api.Controllers
             }
         }
 
-        [HttpPost("login-with-refresh")]
+        [HttpPost("loginRefresh")]
         public async Task<ActionResult> LoginWithRefresh(string RefreshToken)
         {
             Debug.WriteLine("Login with refresh attempt received.");
@@ -56,6 +56,21 @@ namespace Api.Controllers
             catch (ApplicationException ex)
             {
                 return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpPost("revoke-refresh")]
+        public async Task<ActionResult> RevokeRefreshToken(string RefreshToken)
+        {
+            Debug.WriteLine("Revoke refresh token attempt received.");
+            try
+            {
+                await _authService.RevokeRefreshTokenAsync(RefreshToken);
+                return Ok(new { message = "Refresh token revoked successfully." });
+            }
+            catch (ApplicationException ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
