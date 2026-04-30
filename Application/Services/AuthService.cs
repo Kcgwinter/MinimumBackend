@@ -8,6 +8,8 @@ using AutoMapper;
 using Core.DTOs;
 using Core.Entities;
 using Core.Interfaces;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,17 +17,17 @@ namespace Application.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly AppDbContext _context;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
 
         public sealed record Response(string AccessToken, string RefreshToken);
 
-        public AuthService(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
+        public AuthService(IMapper mapper, IConfiguration configuration, AppDbContext context)
         {
-            _unitOfWork = unitOfWork;
             _mapper = mapper;
             _configuration = configuration;
+            _context = context;
         }
 
         public async Task<UserResponseDto> RegisterAsync(UserRegisterDto registerDto)
@@ -50,8 +52,8 @@ namespace Application.Services
                 EmailConfirmationTokenExpires = DateTime.UtcNow.AddHours(24),
             };
 
-            await _unitOfWork.Users.AddAsync(user);
-            await _unitOfWork.CompleteAsync();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<UserResponseDto>(user);
         }
@@ -66,8 +68,8 @@ namespace Application.Services
         )
         {
             var user = (
-                await _unitOfWork.Users.FindAsync(u => u.Username == loginDto.Username)
-            ).FirstOrDefault();
+                await _context.Users.FirstOrDefaultAsync(u => u.Username == loginDto.Username)
+            );
 
             if (
                 user == null
@@ -86,8 +88,8 @@ namespace Application.Services
                 Expires = DateTime.UtcNow.AddDays(7),
             };
 
-            await _unitOfWork.RefreshTokens.AddAsync(refreshToken);
-            await _unitOfWork.CompleteAsync();
+            await _context.RefreshTokens.AddAsync(refreshToken);
+            await _context.SaveChangesAsync();
 
             return (CreateToken(user), refreshToken.Token);
         }
@@ -96,19 +98,20 @@ namespace Application.Services
             string refreshToken
         )
         {
-            var existingToken = await _unitOfWork.RefreshTokens.FindFirstAsync(rt =>
+            var existingToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt =>
                 rt.Token == refreshToken
             );
             if (existingToken == null || existingToken.Expires < DateTime.UtcNow)
                 throw new ApplicationException("Invalid or expired refresh token");
 
-            var user = await _unitOfWork.Users.GetByIdAsync(existingToken.UserId);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == existingToken.UserId);
             if (user == null)
                 throw new ApplicationException("User not found");
 
             // Revoke the old refresh token
             existingToken.Expires = DateTime.UtcNow; // Mark as expired
-            await _unitOfWork.RefreshTokens.UpdateAsync(existingToken);
+            _context.RefreshTokens.Update(existingToken);
+            await _context.SaveChangesAsync();
 
             // Generate a new refresh token
             var newRefreshToken = new RefreshToken
@@ -119,15 +122,15 @@ namespace Application.Services
                 Expires = DateTime.UtcNow.AddDays(7),
             };
 
-            await _unitOfWork.RefreshTokens.AddAsync(newRefreshToken);
-            await _unitOfWork.CompleteAsync();
+            await _context.RefreshTokens.AddAsync(newRefreshToken);
+            await _context.SaveChangesAsync();
 
             return (CreateToken(user), newRefreshToken.Token);
         }
 
         public async Task<bool> UserExistsAsync(string username)
         {
-            return await _unitOfWork.Users.ExistsAsync(u => u.Username == username);
+            return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
         private void CreatePasswordHash(
@@ -183,17 +186,17 @@ namespace Application.Services
 
         public Task RevokeRefreshTokenAsync(string refreshToken)
         {
-            var token = _unitOfWork
-                .RefreshTokens.FindFirstAsync(rt => rt.Token == refreshToken)
+            var token = _context
+                .RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == refreshToken)
                 .Result;
             if (token != null)
             {
-                var userTokens = _unitOfWork.Users.FindAsync(u => u.Id == token.UserId);
-                _unitOfWork.RefreshTokens.DeletedExistsAsync(rt => rt.UserId == token.UserId);
+                var userTokens = _context.Users.FirstOrDefaultAsync(u => u.Id == token.UserId);
+                _context.RefreshTokens.Remove(token);
 
                 token.Expires = DateTime.UtcNow; // Mark as expired
-                _ = _unitOfWork.RefreshTokens.UpdateAsync(token);
-                return _unitOfWork.CompleteAsync();
+                _ = _context.RefreshTokens.Update(token);
+                return _context.SaveChangesAsync();
             }
 
             throw new ApplicationException("Refresh token not found");
@@ -210,14 +213,14 @@ namespace Application.Services
         public async Task RequestPasswordResetAsync(string email)
         {
             var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
-            var user = _unitOfWork.Users.FindAsync(u => u.Email == email).Result.FirstOrDefault();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
                 throw new ApplicationException("Email not found");
 
             user.PasswordResetToken = token;
             user.PasswordResetTokenExpires = DateTime.UtcNow.AddHours(1);
-            _ = _unitOfWork.Users.UpdateAsync(user);
-            await _unitOfWork.CompleteAsync();
+            _ = _context.Users.Update(user);
+            await _context.SaveChangesAsync();
 
             //Todo: Send email with token
             Debug.WriteLine($"Password reset token for {email}: {token}");
@@ -225,9 +228,9 @@ namespace Application.Services
 
         public Task ResetPasswordAsync(PasswordResetRequestDto dto)
         {
-            var user = _unitOfWork
-                .Users.FindAsync(u => u.PasswordResetToken == dto.Token)
-                .Result.FirstOrDefault();
+            var user = _context
+                .Users.FirstOrDefaultAsync(u => u.PasswordResetToken == dto.Token)
+                .Result;
 
             if (user == null || user.PasswordResetTokenExpires < DateTime.UtcNow)
                 throw new ApplicationException("Invalid or expired token");
@@ -239,15 +242,15 @@ namespace Application.Services
             user.PasswordResetToken = null;
             user.PasswordResetTokenExpires = null;
 
-            _ = _unitOfWork.Users.UpdateAsync(user);
-            return _unitOfWork.CompleteAsync();
+            _ = _context.Users.Update(user);
+            return _context.SaveChangesAsync();
         }
 
         public Task ConfirmEmailAsync(string token)
         {
-            var user = _unitOfWork
-                .Users.FindAsync(u => u.EmailConfirmationToken == token)
-                .Result.FirstOrDefault();
+            var user = _context
+                .Users.FirstOrDefaultAsync(u => u.EmailConfirmationToken == token)
+                .Result;
 
             if (user == null || user.EmailConfirmationTokenExpires < DateTime.UtcNow)
                 throw new ApplicationException("Invalid or expired token");
@@ -256,20 +259,20 @@ namespace Application.Services
             user.EmailConfirmationToken = null;
             user.EmailConfirmationTokenExpires = null;
 
-            _ = _unitOfWork.Users.UpdateAsync(user);
-            return _unitOfWork.CompleteAsync();
+            _ = _context.Users.Update(user);
+            return _context.SaveChangesAsync();
         }
 
         public Task RequestEmailConfirmationAsync(string email)
         {
-            var user = _unitOfWork.Users.FindAsync(u => u.Email == email).Result.FirstOrDefault();
+            var user = _context.Users.FirstOrDefaultAsync(u => u.Email == email).Result;
             if (user == null)
                 throw new ApplicationException("Email not found");
 
             user.EmailConfirmationToken = GenerateEmailConfirmationToken();
             user.EmailConfirmationTokenExpires = DateTime.UtcNow.AddHours(24);
-            _ = _unitOfWork.Users.UpdateAsync(user);
-            return _unitOfWork.CompleteAsync();
+            _ = _context.Users.Update(user);
+            return _context.SaveChangesAsync();
         }
     }
 }
