@@ -20,7 +20,7 @@
     * [X] Password Reset/ Password Forgot endpoints
     * [X] Email Confirmation System
     * [X] Refresh Token mechanism
-    * [ ] Role-Base Access Control
+    * [ ] Role-Base Access Control (RBAC)
   * [X] Security
     * [X] Password Policy enforcement
     * [X] secure password hashing
@@ -30,7 +30,7 @@
 * [X] Data Access & Database
   * [X] Code-First Migration
   * [X] Generic Repository Implementation
-  * [X] Unit of Work Pattern
+  * [X] Unit of Work Pattern (Removing Unit Of Work -> Ef Core already Abstracting)
   * [X] Soft Delete
   * [X] Audit Fields Interface
   * [X] Database Health Checks
