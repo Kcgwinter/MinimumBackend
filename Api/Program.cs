@@ -145,12 +145,14 @@ app.UseAuthorization();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); // This MUST be present
+    app.MapOpenApi(); // This generates the /openapi/v1.json
 
-    app.MapScalarApiReference(options =>
+    // Add this instead of Scalar
+    app.UseSwaggerUI(options =>
     {
-        // Force the title and the document route
-        options.WithTitle("My Clean API").WithOpenApiRoutePattern("/openapi/v1.json");
+        // This tells Swagger where to find the JSON file
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.RoutePrefix = "swagger"; 
     });
 }
 

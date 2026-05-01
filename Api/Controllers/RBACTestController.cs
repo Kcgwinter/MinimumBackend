@@ -7,6 +7,12 @@ namespace Api.Controllers
     [ApiController]
     public class RBACTestController : ApiControllerBase
     {
+        [HttpGet("norestriction")]
+        public IActionResult NoRestrictionEndpoint()
+        {
+            return Ok("This endpoint is open to everyone.");
+        }
+
         [HttpGet("admin")]
         [HasPermission("AdminAccess")]
         public IActionResult AdminEndpoint()
