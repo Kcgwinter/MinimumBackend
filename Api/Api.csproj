@@ -8,17 +8,11 @@
   <ItemGroup>
     <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference
-      Include="AutoMapper.Extensions.Microsoft.DependencyInjection"
-      Version="12.0.1"
-    />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="10.0.6" />
-    <PackageReference
-      Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore"
-      Version="10.0.6"
-    />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.6" />
@@ -30,5 +24,10 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Features\Todo\Todo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handler\" />
+    <Folder Include="Provider\" />
   </ItemGroup>
 </Project>

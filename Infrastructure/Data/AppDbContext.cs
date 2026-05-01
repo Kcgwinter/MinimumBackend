@@ -17,6 +17,8 @@ namespace Infrastructure.Data
 
             modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany(p => p.Roles);
         }
 
         // Override SaveChangesAsync to automatically set CreatedAt and UpdatedAt timestamps and handle soft delete logic

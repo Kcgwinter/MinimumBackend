@@ -14,5 +14,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Email).IsRequired().HasMaxLength(100);
         builder.Property(u => u.Username).IsRequired().HasMaxLength(50);
         builder.HasQueryFilter(u => !u.IsDeleted); //global query filter to exclude soft-deleted entities
+
+        builder.HasMany(u => u.Roles).WithMany(r => r.Users);
     }
 }
