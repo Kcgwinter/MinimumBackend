@@ -20,7 +20,7 @@
     * [X] Password Reset/ Password Forgot endpoints
     * [X] Email Confirmation System
     * [X] Refresh Token mechanism
-    * [ ] Role-Base Access Control (RBAC)
+    * [X] Role-Base Access Control (RBAC)
   * [X] Security
     * [X] Password Policy enforcement
     * [X] secure password hashing
@@ -42,6 +42,7 @@
   * [ ] Pagination helper
   * [ ] Filtering/Sorting
   * [ ] Bulk Operations
+  * [X] DBInitializer
 
 * [ ] API Quality & Documentation
   * [ ] API Features

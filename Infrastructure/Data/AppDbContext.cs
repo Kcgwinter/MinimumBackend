@@ -1,4 +1,5 @@
 using Core.Entities;
+using Infrastructure.DBSets;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -7,19 +8,17 @@ namespace Infrastructure.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasIndex(u => u.Email).IsUnique();
-                entity.HasIndex(u => u.Username).IsUnique();
-                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
-                entity.HasQueryFilter(u => !u.IsDeleted); //global query filter to exclude soft-deleted entities
-            });
+            modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany(p => p.Roles);
         }
 
         // Override SaveChangesAsync to automatically set CreatedAt and UpdatedAt timestamps and handle soft delete logic

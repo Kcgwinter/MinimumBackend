@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
@@ -31,16 +32,10 @@ builder.Services.AddApiVersioning(options =>
     );
 });
 
-//Add Features
-builder.Services.AddTodoFeature(
-    builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")
-);
-
 builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi("v1"); // Explicitly name it v1
 
 // Configure Database
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -106,6 +101,20 @@ builder.Services.AddRateLimiter(options =>
     );
 });
 
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.ReferenceHandler = System
+        .Text
+        .Json
+        .Serialization
+        .ReferenceHandler
+        .IgnoreCycles;
+});
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
 // Uses AddDBContextCheck to add health checks for the database contexts
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
 
@@ -114,12 +123,33 @@ builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpS
 
 var app = builder.Build();
 
+app.UseStaticFiles();
 app.UseCors("AllowAll");
-app.UseHttpsRedirection();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 app.UseAuthentication();
 app.UseMiddleware<LoggingMiddleware>();
-app.UseMiddleware<CsrfTokenMiddleware>();
+
+// app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi(); // This generates the /openapi/v1.json
+
+    // Add this instead of Scalar
+    app.UseSwaggerUI(options =>
+    {
+        // This tells Swagger where to find the JSON file
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.RoutePrefix = "swagger";
+    });
+}
+
 app.MapControllers();
 app.UseRateLimiter();
 
@@ -131,14 +161,8 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
     dbContext.Database.EnsureCreated();
-    dbTodoContext.Database.EnsureCreated();
-}
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.MapScalarApiReference();
+    await DBInitializer.SeedAsync(dbContext);
 }
 
 app.Run();
