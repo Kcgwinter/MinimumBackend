@@ -32,12 +32,6 @@ builder.Services.AddApiVersioning(options =>
     );
 });
 
-//Add Features
-builder.Services.AddTodoFeature(
-    builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")
-);
-
 builder.Services.AddEndpointsApiExplorer();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -152,7 +146,7 @@ if (app.Environment.IsDevelopment())
     {
         // This tells Swagger where to find the JSON file
         options.SwaggerEndpoint("/openapi/v1.json", "v1");
-        options.RoutePrefix = "swagger"; 
+        options.RoutePrefix = "swagger";
     });
 }
 
