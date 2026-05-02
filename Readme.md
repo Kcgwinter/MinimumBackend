@@ -35,8 +35,8 @@
   * [X] Audit Fields Interface
   * [X] Database Health Checks
 * [ ] Data Features
-  * [ ] Support Multiple Database Systems (MSSQL, Postgres, SQLite)
-  * [ ] Connection String Management per ENV
+  * [?] Support Multiple Database Systems (MSSQL, Postgres, SQLite) [pushed to future versions]
+  * [X] Connection String Management per AppSettings (AppSettings.dev)
   * [X] EF Core Configuration
   * [ ] Data Validation (FluentValidation)
   * [ ] Pagination helper
