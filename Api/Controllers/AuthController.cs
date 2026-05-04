@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Application.Interfaces;
 using Core.DTOs;
+using Core.Validators;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,15 +11,23 @@ namespace Api.Controllers
     public class AuthController : ApiControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly IValidator<UserRegisterDto> _userRegisterValidator;
 
         public AuthController(IAuthService authService)
         {
             _authService = authService;
+            IValidator<UserRegisterDto> userRegisterValidator;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<UserResponseDto>> Register(UserRegisterDto registerDto)
         {
+            var validationResult = await _userRegisterValidator.ValidateAsync(registerDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+            }
+
             try
             {
                 var user = await _authService.RegisterAsync(registerDto);

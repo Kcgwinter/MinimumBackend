@@ -1,6 +1,8 @@
 using System.Security.Claims;
 using Features.Todo.DTOs;
 using Features.Todo.Interfaces;
+using Features.Todo.Validators; 
+using FluentValidation; 
 using Microsoft.AspNetCore.Mvc;
 
 namespace Features.Todo.Controllers
@@ -11,10 +13,18 @@ namespace Features.Todo.Controllers
     public class TodoController : ControllerBase
     {
         private readonly ITodoService _todoService;
+        private readonly IValidator<TodoCreateDto> _createValidator; // <-- Inject validator
+        private readonly IValidator<TodoUpdateDto> _updateValidator; // <-- Inject validator
 
-        public TodoController(ITodoService todoService)
+        public TodoController(
+            ITodoService todoService,
+            IValidator<TodoCreateDto> createValidator,
+            IValidator<TodoUpdateDto> updateValidator
+        ) // <-- Update constructor
         {
             _todoService = todoService;
+            _createValidator = createValidator;
+            _updateValidator = updateValidator;
         }
 
         [HttpGet]
@@ -39,14 +49,30 @@ namespace Features.Todo.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoResponseDto>> Create(TodoCreateDto createDto)
         {
+            // --- VALIDATION CHECK START ---
+            var validationResult = await _createValidator.ValidateAsync(createDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+            }
+            // --- VALIDATION CHECK END ---
+
             var userId = GetUserId();
             var todo = await _todoService.CreateTodoAsync(createDto, userId);
             return CreatedAtAction(nameof(GetById), new { id = todo.Id }, todo);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<TodoResponseDto>> Update(int id, TodoCreateDto updateDto)
+        public async Task<ActionResult<TodoResponseDto>> Update(int id, TodoUpdateDto updateDto)
         {
+            // --- VALIDATION CHECK START ---
+            var validationResult = await _updateValidator.ValidateAsync(updateDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+            }
+            // --- VALIDATION CHECK END ---
+
             var userId = GetUserId();
             var todo = await _todoService.UpdateTodoAsync(id, updateDto, userId);
 

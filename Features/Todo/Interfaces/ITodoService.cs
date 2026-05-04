@@ -8,7 +8,7 @@ namespace Features.Todo.Interfaces
         Task<List<TodoResponseDto>> GetAllNoUserAsync();
         Task<TodoResponseDto?> GetTodoAsync(int id, string userId);
         Task<TodoResponseDto> CreateTodoAsync(TodoCreateDto createDto, string userId);
-        Task<TodoResponseDto?> UpdateTodoAsync(int id, TodoCreateDto updateDto, string userId);
+        Task<TodoResponseDto?> UpdateTodoAsync(int id, TodoUpdateDto updateDto, string userId);
         Task<bool> DeleteTodoAsync(int id, string userId);
     }
 }
