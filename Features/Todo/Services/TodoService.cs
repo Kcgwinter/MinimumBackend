@@ -12,8 +12,8 @@ namespace Features.Todo.Services
 
         public async Task<List<TodoResponseDto>> GetUserTodosAsync(string userId)
         {
-            var todos = await _context.TodoItems
-                .Where(t => t.UserId == userId)
+            var todos = await _context
+                .TodoItems.Where(t => t.UserId == userId)
                 .OrderByDescending(t => t.CreatedAt)
                 .ToListAsync();
 
@@ -22,8 +22,9 @@ namespace Features.Todo.Services
 
         public async Task<TodoResponseDto?> GetTodoAsync(int id, string userId)
         {
-            var todo = await _context.TodoItems
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+            var todo = await _context.TodoItems.FirstOrDefaultAsync(t =>
+                t.Id == id && t.UserId == userId
+            );
 
             return todo == null ? null : MapToDto(todo);
         }
@@ -36,7 +37,7 @@ namespace Features.Todo.Services
                 Description = createDto.Description,
                 DueDate = createDto.DueDate,
                 UserId = userId,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
             };
 
             _context.TodoItems.Add(todo);
@@ -45,12 +46,18 @@ namespace Features.Todo.Services
             return MapToDto(todo);
         }
 
-        public async Task<TodoResponseDto?> UpdateTodoAsync(int id, TodoCreateDto updateDto, string userId)
+        public async Task<TodoResponseDto?> UpdateTodoAsync(
+            int id,
+            TodoCreateDto updateDto,
+            string userId
+        )
         {
-            var todo = await _context.TodoItems
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+            var todo = await _context.TodoItems.FirstOrDefaultAsync(t =>
+                t.Id == id && t.UserId == userId
+            );
 
-            if (todo == null) return null;
+            if (todo == null)
+                return null;
 
             todo.Title = updateDto.Title;
             todo.Description = updateDto.Description;
@@ -62,10 +69,12 @@ namespace Features.Todo.Services
 
         public async Task<bool> DeleteTodoAsync(int id, string userId)
         {
-            var todo = await _context.TodoItems
-                .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
+            var todo = await _context.TodoItems.FirstOrDefaultAsync(t =>
+                t.Id == id && t.UserId == userId
+            );
 
-            if (todo == null) return false;
+            if (todo == null)
+                return false;
 
             _context.TodoItems.Remove(todo);
             await _context.SaveChangesAsync();
@@ -82,7 +91,7 @@ namespace Features.Todo.Services
                 IsCompleted = todo.IsCompleted,
                 DueDate = todo.DueDate,
                 CreatedAt = todo.CreatedAt,
-                UserId = todo.UserId
+                UserId = todo.UserId,
             };
         }
 
@@ -91,6 +100,15 @@ namespace Features.Todo.Services
             var todos = await _context.TodoItems.ToListAsync();
 
             return todos.Select(t => MapToDto(t)).ToList();
+        }
+
+        public Task<TodoResponseDto?> UpdateTodoAsync(
+            int id,
+            TodoUpdateDto updateDto,
+            string userId
+        )
+        {
+            throw new NotImplementedException();
         }
     }
 }

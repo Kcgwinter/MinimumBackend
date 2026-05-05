@@ -7,7 +7,6 @@ using Application.Interfaces;
 using AutoMapper;
 using Core.DTOs;
 using Core.Entities;
-using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
