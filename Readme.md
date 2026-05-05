@@ -44,14 +44,10 @@
 * [ ] API Quality & Documentation
   * [ ] API Features
     * [X] Swagger / OpenAPI
-    * [ ] XML Comments
     * [X] DTOs
     * [X] AutoMapper
-    * [ ] Model Validation
-    * [ ] Content Negotiation
-  * [ ] API Management
-    * [ ] Request Standardization
-
+    * [X] Model Validation -> used FluentValidation
+    * [ ] Content Negotiation -> Later Implementation to prevent Early Overhead
 * [ ] Core Services
   * [ ] Essentials
     * [X] Email Service (smtp)

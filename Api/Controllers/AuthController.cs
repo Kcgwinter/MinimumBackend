@@ -18,7 +18,7 @@ namespace Api.Controllers
         public AuthController(IAuthService authService)
         {
             _authService = authService;
-           IValidator<UserRegisterDto> userRegisterValidator;
+            IValidator<UserRegisterDto> userRegisterValidator;
             IValidator<UserLoginDto> userLoginValidator;
             IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
         }
