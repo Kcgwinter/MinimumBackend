@@ -13,8 +13,8 @@
   * [-] Global Usings //Not Implemented in 1.0, reason Validation which usings are really needed
   * [X] API Versioning Support
   * [X] CORS Configuration for Frontend
-* [ ] Authentication & Authorization
-  * [ ] Core Auth
+* [X] Authentication & Authorization
+  * [X] Core Auth
     * [X] JWT Bearer Token (Authentication)
     * [X] User Registration/ Login / Logout endpoints
     * [X] Password Reset/ Password Forgot endpoints
@@ -38,10 +38,7 @@
   * [?] Support Multiple Database Systems (MSSQL, Postgres, SQLite) [pushed to future versions]
   * [X] Connection String Management per AppSettings (AppSettings.dev)
   * [X] EF Core Configuration
-  * [ ] Data Validation (FluentValidation)
-  * [ ] Pagination helper
-  * [ ] Filtering/Sorting
-  * [ ] Bulk Operations
+  * [X] Data Validation (FluentValidation)
   * [X] DBInitializer
 
 * [ ] API Quality & Documentation

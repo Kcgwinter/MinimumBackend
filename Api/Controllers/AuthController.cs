@@ -12,11 +12,15 @@ namespace Api.Controllers
     {
         private readonly IAuthService _authService;
         private readonly IValidator<UserRegisterDto> _userRegisterValidator;
+        private readonly IValidator<UserLoginDto> _userLoginValidator;
+        private readonly IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
 
         public AuthController(IAuthService authService)
         {
             _authService = authService;
-            IValidator<UserRegisterDto> userRegisterValidator;
+           IValidator<UserRegisterDto> userRegisterValidator;
+            IValidator<UserLoginDto> userLoginValidator;
+            IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
         }
 
         [HttpPost("register")]
@@ -43,6 +47,13 @@ namespace Api.Controllers
         public async Task<ActionResult<string>> Login(UserLoginDto loginDto)
         {
             Console.WriteLine("Login attempt received.");
+
+            var validationResult = await _userLoginValidator.ValidateAsync(loginDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+            }
+
             try
             {
                 var token = await _authService.LoginAsync(loginDto);
@@ -95,6 +106,11 @@ namespace Api.Controllers
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword(PasswordForgotRequestDto dto)
         {
+            var validationResult = await _passwordForgotValidator.ValidateAsync(dto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+            }
             await _authService.RequestPasswordResetAsync(dto.Email);
             return Ok(new { message = "If that email exists, a reset link has been sent." });
         }

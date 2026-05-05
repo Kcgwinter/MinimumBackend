@@ -5,9 +5,12 @@ using Api.Middleware;
 using Application.Interfaces;
 using Application.Services;
 using Application.Settings;
+using Core.DTOs;
 using Core.Interfaces;
+using Core.Validators;
 using Features.Todo;
 using Features.Todo.Data;
+using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
@@ -114,6 +117,9 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 {
     options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
+
+//Validators
+// builder.Services.AddValidatorsFromAssemblyContaining<UserLoginDtoValidator>();
 
 // Uses AddDBContextCheck to add health checks for the database contexts
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
