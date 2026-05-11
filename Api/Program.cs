@@ -17,8 +17,19 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using Serilog;
+using Serilog.AspNetCore;
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs\\log-.txt", retainedFileCountLimit: 30)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Serilog to logger factory
+builder.Host.UseSerilog();
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -41,8 +52,6 @@ builder.Services.AddOpenApi("v1"); // Explicitly name it v1
 
 // Configure Database
 builder.Services.AddDbContext<AppDbContext>(options =>
-    // options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
@@ -117,7 +126,7 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
     options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
-//Validators
+// Validators
 // builder.Services.AddValidatorsFromAssemblyContaining<UserLoginDtoValidator>();
 
 // Uses AddDBContextCheck to add health checks for the database contexts
@@ -135,6 +144,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
+app.UseSerilogRequestLogging();
 app.UseAuthentication();
 app.UseMiddleware<LoggingMiddleware>();
 

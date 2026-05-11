@@ -15,12 +15,16 @@ namespace Api.Controllers
         private readonly IValidator<UserLoginDto> _userLoginValidator;
         private readonly IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
 
-        public AuthController(IAuthService authService)
+        public AuthController(
+            IAuthService authService,
+            IValidator<UserRegisterDto> userRegisterValidator,
+            IValidator<UserLoginDto> userLoginValidator,
+            IValidator<PasswordForgotRequestDto> passwordForgotValidator)
         {
             _authService = authService;
-            IValidator<UserRegisterDto> userRegisterValidator;
-            IValidator<UserLoginDto> userLoginValidator;
-            IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
+            _userRegisterValidator = userRegisterValidator;
+            _userLoginValidator = userLoginValidator;
+            _passwordForgotValidator = passwordForgotValidator;
         }
 
         [HttpPost("register")]
@@ -29,7 +33,7 @@ namespace Api.Controllers
             var validationResult = await _userRegisterValidator.ValidateAsync(registerDto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+                return BadRequest(validationResult.Errors);
             }
 
             try
@@ -46,12 +50,10 @@ namespace Api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserLoginDto loginDto)
         {
-            Console.WriteLine("Login attempt received.");
-
             var validationResult = await _userLoginValidator.ValidateAsync(loginDto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+                return BadRequest(validationResult.Errors);
             }
 
             try
@@ -68,7 +70,6 @@ namespace Api.Controllers
         [HttpPost("loginRefresh")]
         public async Task<ActionResult> LoginWithRefresh(string RefreshToken)
         {
-            Debug.WriteLine("Login with refresh attempt received.");
             try
             {
                 var newToken = await _authService.LoginWithRefreshAsync(RefreshToken);
@@ -83,7 +84,6 @@ namespace Api.Controllers
         [HttpPost("revoke-refresh")]
         public async Task<ActionResult> RevokeRefreshToken(string RefreshToken)
         {
-            Debug.WriteLine("Revoke refresh token attempt received.");
             try
             {
                 await _authService.RevokeRefreshTokenAsync(RefreshToken);
@@ -98,8 +98,6 @@ namespace Api.Controllers
         [HttpPost("logout")]
         public IActionResult Logout()
         {
-            // For JWT, logout is typically handled on the client side by deleting the token.
-            // Optionally, you can implement token blacklisting here.
             return Ok(new { message = "Logged out successfully." });
         }
 
@@ -109,7 +107,7 @@ namespace Api.Controllers
             var validationResult = await _passwordForgotValidator.ValidateAsync(dto);
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors); // Assumes you have an extension method to format errors
+                return BadRequest(validationResult.Errors);
             }
             await _authService.RequestPasswordResetAsync(dto.Email);
             return Ok(new { message = "If that email exists, a reset link has been sent." });

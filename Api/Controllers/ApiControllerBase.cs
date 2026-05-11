@@ -7,10 +7,10 @@ namespace Api.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ApiControllerBase : ControllerBase
     {
-        protected int GetUserId()
+        protected int? GetUserId()
         {
             var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
-            return int.Parse(userIdClaim?.Value ?? "0");
+            return int.TryParse(userIdClaim?.Value, out var id) ? id : null;
         }
     }
 }
