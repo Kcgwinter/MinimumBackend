@@ -30,8 +30,7 @@ namespace Core.Entities
 
         public DateTime? EmailConfirmationTokenExpires { get; set; }
 
-        [ForeignKey(nameof(RefreshToken))]
-        public RefreshToken? RefreshToken { get; set; }
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 
         public ICollection<Role> Roles { get; set; } = new List<Role>();
     }
