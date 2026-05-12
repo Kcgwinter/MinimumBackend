@@ -41,13 +41,13 @@
   * [X] Data Validation (FluentValidation)
   * [X] DBInitializer
 
-* [ ] API Quality & Documentation
-  * [ ] API Features
+* [X] API Quality & Documentation
+  * [X] API Features
     * [X] Swagger / OpenAPI
     * [X] DTOs
     * [X] AutoMapper
     * [X] Model Validation -> used FluentValidation
-    * [ ] Content Negotiation -> Later Implementation to prevent Early Overhead
+    * [X] Content Negotiation -> Later Implementation to prevent Early Overhead
 * [ ] Core Services
   * [ ] Essentials
     * [X] Email Service (smtp)
@@ -62,9 +62,9 @@
     * [ ] SMS Service (optional)
     * [ ] Push Notifications
     * [ ] Social Auth
-* [ ] Testing & Quality
-  * [ ] Test Coverage
-    * [ ] Unit Testing
+* [?] Testing & Quality
+  * [?] Test Coverage
+    * [X] Unit Testing
     * [ ] Integration Test
     * [ ] Test Data Builds
     * [ ] Database Testing
@@ -86,25 +86,6 @@
     * [ ] Usage Tracking
     * [ ] Invoice Generation
 
-## Phase Programming
-* [ ] Phase 1
-  * [ ] Architecture (Base API calls possible)
-  * [ ] Database Setup
-  * [ ] Basic Auth + Endpoint Protection
-  * [ ] API Quality
-* [ ] Phase 2
-  * [ ] Email
-  * [ ] File Storage
-  * [ ] Caching
-  * [ ] Testing
-* [ ] Phase 3
-  * [ ] Multi Tenancy
-  * [ ] Payments
-  * [ ] Realtime
-* [ ] Phase 4
-  * [ ] Admin Panel (Tenancy Overall)
-  * [ ] Admin Panel (per Tenant)
-
 //Create Solution File
 dotnet new sln
 
@@ -122,21 +103,20 @@ dotnet sln .\ModularMonolith.sln add .\Modules\Module1\Module1.csproj
 microsoft.aspnetcore.app 
 
 
-
 ## To Add a new Feature:
 Follow the following steps:
-Model							//Sets Props of Object -> Inherit BaseModel
-Add to DBContext		
-Create Migrations and Migrate	// dotnet ef migrations add AddStorage
-								// dotnet dotnet ef database update dotnet wat
-InterfaceRepository				// Gives play rules for repository (model controller)
-Repository						// Model Controller Inherits from InterfaceRepository
-Add Repositories to Program CS 	//builder.Services.AddScoped<ITodoRepository, TodoRepository>();
-DTOs							// Create DTO(return Object on regular request)
-	Create DTO					// Create Create DTO  (DTO presented by Frontend for create Object)
-	Update DTO					// Create Update DTO  (DTO presented by Frontend for update Object)
-Create Mapper Model - DTOs
-Controller						// API Entry point, inherit BaseAPIController
+
+- Model							//Sets Props of Object -> Inherit BaseModel
+- Add to DBContext
+- Create Migrations and Migrate	// dotnet ef migrations add AddStorage
+- InterfaceRepository				// Gives play rules for repository (model controller)
+- Repository						// Model Controller Inherits from InterfaceRepository
+- Add Repositories to Program CS 	//builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+- DTOs							// Create DTO(return Object on regular request)
+	- Create DTO					// Create Create DTO  (DTO presented by Frontend for create Object)
+	- Update DTO					// Create Update DTO  (DTO presented by Frontend for update Object)
+- Create Mapper Model - DTOs
+- Controller						// API Entry point, inherit BaseAPIController
 
 
 ## DB Migrations

@@ -1,0 +1,67 @@
+2026-05-11 21:21:22.785 -04:00 [WRN] Entity 'User' has a global query filter defined and is the required end of a relationship with the entity 'RefreshToken'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-11 21:21:22.822 -04:00 [WRN] The foreign key property 'RefreshToken.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-05-11 21:21:42.583 -04:00 [WRN] Entity 'User' has a global query filter defined and is the required end of a relationship with the entity 'RefreshToken'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-11 21:21:42.619 -04:00 [WRN] The foreign key property 'RefreshToken.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-05-11 21:21:42.776 -04:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-05-11 21:21:42.801 -04:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2026-05-11 21:21:42.809 -04:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2026-05-12 01:21:42.8056397+00:00');
+SELECT changes();
+2026-05-11 21:21:42.850 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2026-05-11 21:21:42.856 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-05-11 21:21:42.859 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-05-11 21:21:42.867 -04:00 [INF] Applying migration '20260512012124_UpdateEFTesting'.
+2026-05-11 21:21:42.880 -04:00 [WRN] The migration operation 'PRAGMA foreign_keys = 0;
+' from migration 'UpdateEFTesting' cannot be executed in a transaction. If the app is terminated or an unrecoverable error occurs while this operation is being executed then the migration will be left in a partially applied state and would need to be reverted manually before it can be applied again. Create a separate migration that contains just this operation.
+2026-05-11 21:21:42.881 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP INDEX "IX_RefreshTokens_UserId1";
+2026-05-11 21:21:42.884 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "RefreshTokens" ADD "RefreshTokenHash" TEXT NOT NULL DEFAULT '';
+2026-05-11 21:21:42.886 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_RefreshTokens_UserId1" ON "RefreshTokens" ("UserId1");
+2026-05-11 21:21:42.887 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ef_temp_Users" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY AUTOINCREMENT,
+    "CreatedAt" TEXT NOT NULL,
+    "DeletedAt" TEXT NULL,
+    "Email" TEXT NOT NULL,
+    "EmailConfirmationToken" TEXT NULL,
+    "EmailConfirmationTokenExpires" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "IsActive" INTEGER NOT NULL,
+    "IsDeleted" INTEGER NOT NULL,
+    "PasswordResetToken" TEXT NULL,
+    "PasswordResetTokenExpires" TEXT NULL,
+    "UpdatedAt" TEXT NULL,
+    "Username" TEXT NOT NULL
+);
+2026-05-11 21:21:42.889 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ef_temp_Users" ("Id", "CreatedAt", "DeletedAt", "Email", "EmailConfirmationToken", "EmailConfirmationTokenExpires", "EmailConfirmed", "IsActive", "IsDeleted", "PasswordResetToken", "PasswordResetTokenExpires", "UpdatedAt", "Username")
+SELECT "Id", "CreatedAt", "DeletedAt", "Email", "EmailConfirmationToken", "EmailConfirmationTokenExpires", "EmailConfirmed", "IsActive", "IsDeleted", "PasswordResetToken", "PasswordResetTokenExpires", "UpdatedAt", "Username"
+FROM "Users";
+2026-05-11 21:21:42.891 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys = 0;
+2026-05-11 21:21:42.893 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DROP TABLE "Users";
+2026-05-11 21:21:42.895 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ef_temp_Users" RENAME TO "Users";
+2026-05-11 21:21:42.898 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys = 1;
+2026-05-11 21:21:42.900 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Users_Email" ON "Users" ("Email");
+2026-05-11 21:21:42.902 -04:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Users_Username" ON "Users" ("Username");
+2026-05-11 21:21:42.904 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20260512012124_UpdateEFTesting', '10.0.6');
+2026-05-11 21:21:42.907 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
