@@ -21,4 +21,8 @@
   <ItemGroup>
     <Compile Include="Features\**\**\*.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handler\" />
+  </ItemGroup>
 </Project>
