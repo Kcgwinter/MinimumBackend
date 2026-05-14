@@ -16,8 +16,3 @@ models:
   - uses: anthropic/claude-4-sonnet
     with:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
-# MCP Servers that Continue can access
-# https://docs.continue.dev/customization/mcp-tools
-mcpServers:
-  - uses: anthropic/memory-mcp

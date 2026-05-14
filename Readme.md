@@ -40,7 +40,6 @@
   * [X] EF Core Configuration
   * [X] Data Validation (FluentValidation)
   * [X] DBInitializer
-
 * [X] API Quality & Documentation
   * [X] API Features
     * [X] Swagger / OpenAPI
@@ -48,20 +47,6 @@
     * [X] AutoMapper
     * [X] Model Validation -> used FluentValidation
     * [X] Content Negotiation -> Later Implementation to prevent Early Overhead
-* [ ] Core Services
-  * [ ] Essentials
-    * [X] Email Service (smtp)
-    * [ ] File Storage Service (local + cloud)
-    * [ ] Caching (Memory Cache + Redis)
-    * [ ] Background Job Service
-    * [ ] DateTime Service
-    * [ ] Current User Service
-  * [ ] External Integrations
-    * [ ] Payment Processing
-    * [ ] Cloud Storage
-    * [ ] SMS Service (optional)
-    * [ ] Push Notifications
-    * [ ] Social Auth
 * [?] Testing & Quality
   * [?] Test Coverage
     * [X] Unit Testing
@@ -73,6 +58,14 @@
     * [ ] Dockerfile
     * [ ] docker compose
     * [ ] docker health checker
+* [] Important Features to implement
+  * [] MediatR / CQRS
+  * [] Domain Events
+  * [] MediatR / CQRS
+
+
+
+Later Versions:
 * [ ] SAAS Features
   * [ ] Multi-Tenancy
     * [ ] Tenant Identification (header, subdomain)
@@ -85,6 +78,15 @@
     * [ ] Plan/ Features Management
     * [ ] Usage Tracking
     * [ ] Invoice Generation
+* [ ] Core Services
+  * [ ] Essentials
+    * [X] Email Service (smtp)
+    * [ ] File Storage Service (local + cloud)
+    * [ ] Caching (Memory Cache + Redis)
+    * [ ] Background Job Service
+    * [ ] DateTime Service
+    * [ ] Current User Service
+
 
 //Create Solution File
 dotnet new sln
