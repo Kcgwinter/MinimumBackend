@@ -1,12 +1,16 @@
 namespace Api.Middleware;
 
+using Microsoft.Extensions.Logging;
+
 public class LoggingMiddleware
 {
     private readonly RequestDelegate _next;
+    private readonly ILogger<LoggingMiddleware> _logger;
 
-    public LoggingMiddleware(RequestDelegate next)
+    public LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext context)
@@ -35,8 +39,12 @@ public class LoggingMiddleware
         var requestBody = await requestStream.ReadToEndAsync();
         context.Request.Body.Position = 0;
 
-        Console.WriteLine($"Request: {context.Request.Method} {context.Request.Path}");
-        Console.WriteLine($"Body: {requestBody}");
+        _logger.LogInformation(
+            "HTTP Request Information: Method: {Method}, Path: {Path}, Body: {Body}",
+            context.Request.Method,
+            context.Request.Path,
+            requestBody
+        );
     }
 
     private async Task LogResponse(HttpContext context, MemoryStream responseBody)
@@ -46,8 +54,11 @@ public class LoggingMiddleware
         var responseBodyText = await responseStream.ReadToEndAsync();
         responseBody.Seek(0, SeekOrigin.Begin);
 
-        Console.WriteLine($"Response: {context.Response.StatusCode}");
-        Console.WriteLine($"Body: {responseBodyText}");
+        _logger.LogInformation(
+            "HTTP Response Information: StatusCode: {StatusCode}, Body: {Body}",
+            context.Response.StatusCode,
+            responseBodyText
+        );
 
         // Write the response body to the original stream
         await responseBody.CopyToAsync(context.Response.Body);

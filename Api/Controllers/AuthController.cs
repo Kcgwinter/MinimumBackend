@@ -1,8 +1,10 @@
 using System.Diagnostics;
+using Application.Command;
 using Application.Interfaces;
 using Core.DTOs;
 using Core.Validators;
 using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -14,54 +16,37 @@ namespace Api.Controllers
         private readonly IValidator<UserRegisterDto> _userRegisterValidator;
         private readonly IValidator<UserLoginDto> _userLoginValidator;
         private readonly IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
+        private readonly IMediator _mediator;
 
         public AuthController(
             IAuthService authService,
-            IValidator<UserRegisterDto> userRegisterValidator,
-            IValidator<UserLoginDto> userLoginValidator,
-            IValidator<PasswordForgotRequestDto> passwordForgotValidator)
+            IValidator<PasswordForgotRequestDto> passwordForgotValidator,
+            IMediator mediator
+        )
         {
             _authService = authService;
-            _userRegisterValidator = userRegisterValidator;
-            _userLoginValidator = userLoginValidator;
             _passwordForgotValidator = passwordForgotValidator;
+            _mediator = mediator;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<UserResponseDto>> Register(UserRegisterDto registerDto)
         {
-            var validationResult = await _userRegisterValidator.ValidateAsync(registerDto);
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
+            var userDto = await _mediator.Send(new RegisterCommand(registerDto));
 
-            try
-            {
-                var user = await _authService.RegisterAsync(registerDto);
-                return Ok(user);
-            }
-            catch (ApplicationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(userDto);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserLoginDto loginDto)
         {
-            var validationResult = await _userLoginValidator.ValidateAsync(loginDto);
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
-
             try
             {
-                var token = await _authService.LoginAsync(loginDto);
+                var token = await _mediator.Send(new LoginCommand(loginDto));
                 return Ok(new { token });
             }
-            catch (ApplicationException ex)
+            // ExceptionMiddleware will handle unexpected errors, but we catch ApplicationException for specific UI feedback
+            catch (Exception ex) when (ex is ApplicationException or UnauthorizedAccessException)
             {
                 return Unauthorized(ex.Message);
             }
