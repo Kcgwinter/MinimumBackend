@@ -3,6 +3,8 @@ using Application.Command;
 using Application.Interfaces;
 using Core.DTOs;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Application.Handler;
 
@@ -27,12 +29,18 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, UserResponseDto>
             var user = await _authService.RegisterAsync(request.RegisterDto);
             return user;
         }
-        catch (ApplicationException ex)
-        {
-            // Handle domain-specific exceptions (e.g., user already exists).
-            // Assuming UserResponseDto can accept an error message for failure state.
-            return new UserResponseDto(null, ex.Message);
-        }
+catch (ApplicationException ex)
+{
+    // Handle domain-specific exceptions (e.g., user already exists).
+    // Return a response DTO with error information using object initializer.
+    return new UserResponseDto
+    {
+        Id = 0,
+        Username = ex.Message,
+        Email = string.Empty,
+        CreatedAt = DateTime.UtcNow
+    };
+}
         catch (Exception ex)
         {
             // Catch all other unexpected system errors, log them, and wrap them.

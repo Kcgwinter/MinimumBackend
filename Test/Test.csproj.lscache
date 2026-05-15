@@ -54,7 +54,243 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
+../Api/Controllers/
+ ApiControllerBase.cs
+  @folderNames=Api,Controllers
+ AuthController.cs
+  @folderNames=Api,Controllers
+ RBACTestController.cs
+  @folderNames=Api,Controllers
+../Api/Handler/
+ HasPermissionAttribute.cs
+  @folderNames=Api,Handler
+ PermissionHandler.cs
+  @folderNames=Api,Handler
+ PermissionRequirement.cs
+  @folderNames=Api,Handler
+../Api/Middleware/
+ CsrfTokenMiddleware.cs
+  @folderNames=Api,Middleware
+ ExceptionMiddleware.cs
+  @folderNames=Api,Middleware
+ LoggingMiddleware.cs
+  @folderNames=Api,Middleware
+../Api/obj/Debug/net10.0/
+ .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+  @folderNames=Api,obj,Debug,net10.0
+ Api.AssemblyInfo.cs
+  @folderNames=Api,obj,Debug,net10.0
+ Api.GlobalUsings.g.cs
+  @folderNames=Api,obj,Debug,net10.0
+ Api.MvcApplicationPartsAssemblyInfo.cs
+  @folderNames=Api,obj,Debug,net10.0
+../Api/
+ Program.cs
+  @folderNames=Api
+ Provider/PermissionPolicyProvider.cs
+  @folderNames=Api,Provider
+../Application/Command/
+ LoginCommand.cs
+  @folderNames=Application,Command
+ LoginCommandHandler.cs
+  @folderNames=Application,Command
+ RegisterCommand.cs
+  @folderNames=Application,Command
+ RegisterHandler.cs
+  @folderNames=Application,Command
+../Application/
+ Handler/RegisterHandler.cs
+  @folderNames=Application,Handler
+ Interfaces/
+  IAuthService.cs
+   @folderNames=Application,Interfaces
+  ICommand.cs
+   @folderNames=Application,Interfaces
+  IEmailService.cs
+   @folderNames=Application,Interfaces
+  IQuery.cs
+   @folderNames=Application,Interfaces
+ Mapping/MappingProfile.cs
+  @folderNames=Application,Mapping
+ obj/Debug/net10.0/
+  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+   @folderNames=Application,obj,Debug,net10.0
+  Application.AssemblyInfo.cs
+   @folderNames=Application,obj,Debug,net10.0
+  Application.GlobalUsings.g.cs
+   @folderNames=Application,obj,Debug,net10.0
+ Services/
+  AuthService.cs
+   @folderNames=Application,Services
+  EmailService.cs
+   @folderNames=Application,Services
+ Settings/SmtpSettings.cs
+  @folderNames=Application,Settings
+../Core/DTOs/
+ TokenResponseDto.cs
+  @folderNames=Core,DTOs
+ UserDtos.cs
+  @folderNames=Core,DTOs
+../Core/Entities/
+ BaseEntity.cs
+  @folderNames=Core,Entities
+ Permission.cs
+  @folderNames=Core,Entities
+ RefreshToken.cs
+  @folderNames=Core,Entities
+ Role.cs
+  @folderNames=Core,Entities
+ User.cs
+  @folderNames=Core,Entities
+../Core/obj/Debug/net10.0/
+ .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+  @folderNames=Core,obj,Debug,net10.0
+ Core.AssemblyInfo.cs
+  @folderNames=Core,obj,Debug,net10.0
+ Core.GlobalUsings.g.cs
+  @folderNames=Core,obj,Debug,net10.0
+../Core/obj/Release/net10.0/
+ .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+  @folderNames=Core,obj,Release,net10.0
+ Core.AssemblyInfo.cs
+  @folderNames=Core,obj,Release,net10.0
+ Core.GlobalUsings.g.cs
+  @folderNames=Core,obj,Release,net10.0
+../Core/Validators/
+ PasswordForgotRequestDtoValidator.cs
+  @folderNames=Core,Validators
+ PasswordResetRequestDtoValidator.cs
+  @folderNames=Core,Validators
+ UserLoginDtoValidator.cs
+  @folderNames=Core,Validators
+ UserLogoutDtoValidator.cs
+  @folderNames=Core,Validators
+ UserRegisterDtoValidator.cs
+  @folderNames=Core,Validators
+../Features/Todo/
+ Controllers/TodoController.cs
+  @folderNames=Features,Todo,Controllers
+ Data/TodoDbContext.cs
+  @folderNames=Features,Todo,Data
+ DTOs/TodoDTOs.cs
+  @folderNames=Features,Todo,DTOs
+ Interfaces/ITodoService.cs
+  @folderNames=Features,Todo,Interfaces
+ Migrations/
+  20251213023103_InitialCreate.cs
+   @folderNames=Features,Todo,Migrations
+  20251213023103_InitialCreate.Designer.cs
+   @folderNames=Features,Todo,Migrations
+  TodoDbContextModelSnapshot.cs
+   @folderNames=Features,Todo,Migrations
+ Models/TodoItem.cs
+  @folderNames=Features,Todo,Models
+ obj/Debug/net10.0/
+  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+   @folderNames=Features,Todo,obj,Debug,net10.0
+  Todo.AssemblyInfo.cs
+   @folderNames=Features,Todo,obj,Debug,net10.0
+  Todo.GlobalUsings.g.cs
+   @folderNames=Features,Todo,obj,Debug,net10.0
+ obj/Release/net10.0/
+  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+   @folderNames=Features,Todo,obj,Release,net10.0
+  Todo.AssemblyInfo.cs
+   @folderNames=Features,Todo,obj,Release,net10.0
+  Todo.GlobalUsings.g.cs
+   @folderNames=Features,Todo,obj,Release,net10.0
+ Services/TodoService.cs
+  @folderNames=Features,Todo,Services
+ TodoExtensions.cs
+  @folderNames=Features,Todo
+ Validators/
+  TodoCreateDtoValidator.cs
+   @folderNames=Features,Todo,Validators
+  TodoResponseDtoValidator.cs
+   @folderNames=Features,Todo,Validators
+  TodoUpdateDtoValidator.cs
+   @folderNames=Features,Todo,Validators
+../Infrastructure/Data/
+ AppDbContext.cs
+  @folderNames=Infrastructure,Data
+ DBInitializer.cs
+  @folderNames=Infrastructure,Data
+../Infrastructure/DBSets/
+ RefreshTokenConfiguration.cs
+  @folderNames=Infrastructure,DBSets
+ UserConfiguration.cs
+  @folderNames=Infrastructure,DBSets
+../Infrastructure/
+ Interfaces/IPermissionProvider.cs
+  @folderNames=Infrastructure,Interfaces
+ Migrations/
+  20251213023916_InitialCreate.cs
+   @folderNames=Infrastructure,Migrations
+  20251213023916_InitialCreate.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260428221655_AuthUpdate.cs
+   @folderNames=Infrastructure,Migrations
+  20260428221655_AuthUpdate.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260429220403_Create_RefreshToken.cs
+   @folderNames=Infrastructure,Migrations
+  20260429220403_Create_RefreshToken.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260429222427_RefreshToken_BaseEntity.cs
+   @folderNames=Infrastructure,Migrations
+  20260429222427_RefreshToken_BaseEntity.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260430025706_CreateRBAC.cs
+   @folderNames=Infrastructure,Migrations
+  20260430025706_CreateRBAC.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260430030117_ConnectUserAndRole.cs
+   @folderNames=Infrastructure,Migrations
+  20260430030117_ConnectUserAndRole.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260430030558_Create_MtoNConntection.cs
+   @folderNames=Infrastructure,Migrations
+  20260430030558_Create_MtoNConntection.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260430032555_Edit_MtoNConntection.cs
+   @folderNames=Infrastructure,Migrations
+  20260430032555_Edit_MtoNConntection.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260501000139_Edit_UserRolePermission_DifferentApproach.cs
+   @folderNames=Infrastructure,Migrations
+  20260501000139_Edit_UserRolePermission_DifferentApproach.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  20260512012124_UpdateEFTesting.cs
+   @folderNames=Infrastructure,Migrations
+  20260512012124_UpdateEFTesting.Designer.cs
+   @folderNames=Infrastructure,Migrations
+  AppDbContextModelSnapshot.cs
+   @folderNames=Infrastructure,Migrations
+ obj/Debug/net10.0/
+  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+   @folderNames=Infrastructure,obj,Debug,net10.0
+  Infrastructure.GlobalUsings.g.cs
+   @folderNames=Infrastructure,obj,Debug,net10.0
+ obj/Release/net10.0/
+  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+   @folderNames=Infrastructure,obj,Release,net10.0
+  Infrastructure.AssemblyInfo.cs
+   @folderNames=Infrastructure,obj,Release,net10.0
+  Infrastructure.GlobalUsings.g.cs
+   @folderNames=Infrastructure,obj,Release,net10.0
+ Provider/PermissionProvider.cs
+  @folderNames=Infrastructure,Provider
 <NUGET>/microsoft.net.test.sdk/17.9.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs
+AuthServiceTests.cs
+Controllers/Fixtures/AuthFixture.cs
+obj/Debug/net10.0/
+ .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+ Test.AssemblyInfo.cs
+ Test.GlobalUsings.g.cs
+obj/Debug/net8.0/Test.GlobalUsings.g.cs
+Services/
+ AuthServiceTests.cs
+ EmailServiceTests.cs
 
 [metadataReferences]
 ../
