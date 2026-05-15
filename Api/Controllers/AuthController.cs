@@ -87,26 +87,21 @@ namespace Api.Controllers
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword(PasswordForgotRequestDto dto)
         {
-            var validationResult = await _passwordForgotValidator.ValidateAsync(dto);
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
-            await _authService.RequestPasswordResetAsync(dto.Email);
+            await _mediator.Send(new ForgotPasswordCommand(dto));
             return Ok(new { message = "If that email exists, a reset link has been sent." });
         }
 
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword(PasswordResetRequestDto dto)
         {
-            await _authService.ResetPasswordAsync(dto);
+            await _mediator.Send(new ResetPasswordCommand(dto));
             return Ok(new { message = "Password has been reset successfully." });
         }
 
         [HttpGet("confirm-email")]
         public async Task<IActionResult> ConfirmEmail(string token)
         {
-            await _authService.ConfirmEmailAsync(token);
+            await _mediator.Send(new ConfirmEmailCommand(token));
             return Ok(new { message = "Email confirmed successfully." });
         }
     }

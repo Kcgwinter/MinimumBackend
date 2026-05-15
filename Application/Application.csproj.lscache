@@ -55,16 +55,20 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 
 [sourceFiles]
 Command/
+ ConfirmEmailCommand.cs
  ForgotPasswordCommand.cs
  LoginCommand.cs
  LoginWithRefreshCommand.cs
  RegisterCommand.cs
+ ResetPasswordCommand.cs
  RevokeRefreshTokenCommand.cs
 Handler/
+ ConfirmEmailHandler.cs
  ForgotPasswordHandler.cs
  LoginCommandHandler.cs
  LoginWithRefreshHandler.cs
  RegisterHandler.cs
+ ResetPasswordHandler.cs
  RevokeRefreshTokenHandler.cs
 Interfaces/
  IAuthService.cs
