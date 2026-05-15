@@ -56,9 +56,12 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 [sourceFiles]
 Command/
  LoginCommand.cs
- LoginCommandHandler.cs
+ LoginWithRefreshCommand.cs
  RegisterCommand.cs
-Handler/RegisterHandler.cs
+Handler/
+ LoginCommandHandler.cs
+ LoginWithRefreshHandler.cs
+ RegisterHandler.cs
 Interfaces/
  IAuthService.cs
  ICommand.cs
