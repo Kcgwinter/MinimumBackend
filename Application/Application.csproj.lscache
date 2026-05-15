@@ -58,7 +58,6 @@ Command/
  LoginCommand.cs
  LoginCommandHandler.cs
  RegisterCommand.cs
- RegisterHandler.cs
 Handler/RegisterHandler.cs
 Interfaces/
  IAuthService.cs
