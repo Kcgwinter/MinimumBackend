@@ -35,7 +35,7 @@
   * [X] Audit Fields Interface
   * [X] Database Health Checks
 * [ ] Data Features
-  * [?] Support Multiple Database Systems (MSSQL, Postgres, SQLite) [pushed to future versions]
+
   * [X] Connection String Management per AppSettings (AppSettings.dev)
   * [X] EF Core Configuration
   * [X] Data Validation (FluentValidation)
@@ -59,9 +59,7 @@
     * [ ] docker compose
     * [ ] docker health checker
 * [] Important Features to implement
-  * [] MediatR / CQRS
-  * [] Domain Events
-  * [] MediatR / CQRS
+  * [X] MediatR / CQRS
 
 
 
@@ -86,6 +84,7 @@ Later Versions:
     * [ ] Background Job Service
     * [ ] DateTime Service
     * [ ] Current User Service
+* [] Support Multiple Database Systems (MSSQL, Postgres, SQLite) [pushed to future versions]
 
 
 //Create Solution File
