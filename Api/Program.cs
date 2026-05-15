@@ -61,10 +61,17 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddHttpContextAccessor();
 
 //CQRS - Mediatr
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(IQuery<>).Assembly); // Registers handlers in the Application layer
+});
 
 // Configure AutoMapper
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddMaps(typeof(Program).Assembly);
+});
 
 // Configure Authentication
 builder
@@ -172,6 +179,9 @@ app.MapControllers();
 app.UseRateLimiter();
 
 app.MapHealthChecks("/health");
+
+// Register Features
+builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
 // Ensure database is created and migrations applied
 using (var scope = app.Services.CreateScope())
