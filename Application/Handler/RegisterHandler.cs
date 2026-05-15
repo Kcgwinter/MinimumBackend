@@ -3,8 +3,6 @@ using Application.Command;
 using Application.Interfaces;
 using Core.DTOs;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.Handler;
 

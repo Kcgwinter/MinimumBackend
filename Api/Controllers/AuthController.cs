@@ -55,8 +55,8 @@ namespace Api.Controllers
         {
             try
             {
-                var newToken = await _authService.LoginWithRefreshAsync(RefreshToken);
-                return Ok(new { token = newToken });
+                var newToken = await _mediator.Send(new LoginWithRefreshCommand(RefreshToken));
+                return Ok(new { UserToken = RefreshToken });
             }
             catch (ApplicationException ex)
             {
@@ -69,7 +69,7 @@ namespace Api.Controllers
         {
             try
             {
-                await _authService.RevokeRefreshTokenAsync(RefreshToken);
+                await _mediator.Send(new RevokeRefreshTokenCommand(RefreshToken));
                 return Ok(new { message = "Refresh token revoked successfully." });
             }
             catch (ApplicationException ex)
