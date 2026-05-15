@@ -68,7 +68,10 @@ builder.Services.AddMediatR(cfg =>
 });
 
 // Configure AutoMapper
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddMaps(typeof(Program).Assembly);
+});
 
 // Configure Authentication
 builder

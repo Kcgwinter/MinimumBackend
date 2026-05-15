@@ -13,8 +13,6 @@ namespace Api.Controllers
     public class AuthController : ApiControllerBase
     {
         private readonly IAuthService _authService;
-        private readonly IValidator<UserRegisterDto> _userRegisterValidator;
-        private readonly IValidator<UserLoginDto> _userLoginValidator;
         private readonly IValidator<PasswordForgotRequestDto> _passwordForgotValidator;
         private readonly IMediator _mediator;
 

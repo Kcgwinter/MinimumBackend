@@ -27,12 +27,6 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, UserResponseDto>
             var user = await _authService.RegisterAsync(request.RegisterDto);
             return user;
         }
-        catch (ApplicationException ex)
-        {
-            // Handle domain-specific exceptions (e.g., user already exists).
-            // Assuming UserResponseDto can accept an error message for failure state.
-            return new UserResponseDto(null, ex.Message);
-        }
         catch (Exception ex)
         {
             // Catch all other unexpected system errors, log them, and wrap them.

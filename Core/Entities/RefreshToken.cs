@@ -19,6 +19,6 @@ namespace Core.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
         public DateTime Expires { get; set; }
 
-        public User User { get; set; }
+        public User User { get; set; } = null!;
     }
 }
