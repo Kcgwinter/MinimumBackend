@@ -42,6 +42,10 @@ public class DBInitializer
             var adminUser = new User { Username = "admin", Email = "admin@example.com" };
             context.Users.Add(adminUser);
             await context.SaveChangesAsync();
+
+            var testUser = new User { Username = "testuser", Email = "test@test.com" };
+            context.Users.Add(testUser);
+            await context.SaveChangesAsync();
         }
     }
 }
