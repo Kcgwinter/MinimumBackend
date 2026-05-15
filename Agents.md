@@ -30,3 +30,36 @@ You are an expert C# developer specializing in Clean Architecture and SOLID prin
 ## Workflow Instructions
 - Before creating a new service, check if an Interface is needed in the Application layer.
 - If you are unsure which layer a file belongs in, ask for clarification before writing code.
+
+# File Operations Protocol
+
+## Tool Call Format:
+When invoking file tools, use the exact XML schema required by the system. Do not wrap tool calls in markdown code blocks during execution. 
+
+Template Structure:
+<read_file>
+<path>relative/path/to/file.cs</path>
+<task_progress>
+- [ ] Current task status
+</task_progress>
+</read_file>
+
+## Required parameters for file tools:
+- `read_file`: Always include `<path>` parameter
+- `write_to_file`: Include both `<path>` and `<content>` parameters
+- `replace_in_file`: Include `<path>` and `<diff>` parameters
+
+## Path conventions:
+- Use forward slashes (/) in paths, never backslashes (\)
+- Always use relative paths from the project root working directory
+- Verify a file exists before reading (use `list_files` or `search_grep` if unsure of the exact path)
+
+## Task progress tracking:
+- Include the `<task_progress>` parameter in every single tool call
+- Use Markdown checklist format inside the tags: `- [x]` for complete, `- [ ]` for pending
+- Update the status dynamically after each consecutive operation
+
+## Error prevention:
+- Check if the target directory exists before attempting to write new files
+- Use `list_files` to verify file structure before executing multi-file refactors
+- Include `task_progress` even for simple read-only operations to maintain state continuity
