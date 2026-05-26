@@ -60,7 +60,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddHttpContextAccessor();
 
-//CQRS - Mediatr
+//CQRS - MediatR
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
@@ -138,6 +138,7 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 
 // Validators
 // builder.Services.AddValidatorsFromAssemblyContaining<UserLoginDtoValidator>();
+builder.Services.AddValidatorsFromAssembly(typeof(Core.DTOs.UserLoginDto).Assembly);
 
 // Uses AddDBContextCheck to add health checks for the database contexts
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
@@ -145,6 +146,8 @@ builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
 //Add SMTP Service
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
+//Swagger
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -156,6 +159,7 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseSerilogRequestLogging();
 app.UseAuthentication();
+
 // app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
 app.UseMiddleware<LoggingMiddleware>(); // Moved to run after Authorization
@@ -163,7 +167,7 @@ app.UseMiddleware<LoggingMiddleware>(); // Moved to run after Authorization
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();   // Serves the generated JSON document
+    app.UseSwagger(); // Serves the generated JSON document
     app.UseSwaggerUI(); // Enables the interactive web interface
 }
 
@@ -183,7 +187,7 @@ app.MapHealthChecks("/health");
 //     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 //     var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
 //     dbContext.Database.EnsureCreated();
-// 
+//
 //     await DBInitializer.SeedAsync(dbContext);
 // }
 
