@@ -3,12 +3,13 @@ using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
+using Application.Mapping;
 using Application.Services;
 using Application.Settings;
 using Core.DTOs;
 using Core.Validators;
-using Features.Todo;
-using Features.Todo.Data;
+// using Features.Todo;
+// using Features.Todo.Data;
 using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -60,7 +61,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddHttpContextAccessor();
 
-//CQRS - Mediatr
+//CQRS - MediatR
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
@@ -68,10 +69,16 @@ builder.Services.AddMediatR(cfg =>
 });
 
 // Configure AutoMapper
-builder.Services.AddAutoMapper(cfg =>
-{
-    cfg.AddMaps(typeof(Program).Assembly);
-});
+// builder.Services.AddAutoMapper(typeof(Application.Mapping.MappingProfile).Assembly);
+
+// Native DI registration in AutoMapper 13+
+builder.Services.AddAutoMapper(
+    cfg =>
+    {
+        // You can add extra configuration here if needed
+    },
+    typeof(MappingProfile).Assembly
+);
 
 // Configure Authentication
 builder
@@ -138,6 +145,7 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 
 // Validators
 // builder.Services.AddValidatorsFromAssemblyContaining<UserLoginDtoValidator>();
+builder.Services.AddValidatorsFromAssembly(typeof(Core.DTOs.UserLoginDto).Assembly);
 
 // Uses AddDBContextCheck to add health checks for the database contexts
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
@@ -145,6 +153,8 @@ builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
 //Add SMTP Service
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
+//Swagger
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -156,23 +166,16 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseSerilogRequestLogging();
 app.UseAuthentication();
-app.UseMiddleware<LoggingMiddleware>();
 
 // app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
+app.UseMiddleware<LoggingMiddleware>(); // Moved to run after Authorization
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); // This generates the /openapi/v1.json
-
-    // Add this instead of Scalar
-    app.UseSwaggerUI(options =>
-    {
-        // This tells Swagger where to find the JSON file
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
-        options.RoutePrefix = "swagger";
-    });
+    app.UseSwagger(); // Serves the generated JSON document
+    app.UseSwaggerUI(); // Enables the interactive web interface
 }
 
 app.MapControllers();
@@ -181,16 +184,18 @@ app.UseRateLimiter();
 app.MapHealthChecks("/health");
 
 // Register Features
-builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection")!);
+// var todoConnectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+// builder.Services.AddDbContext<TodoDbContext>(options => options.UseSqlite(todoConnectionString));
+// builder.Services.AddTodoFeature(todoConnectionString);
 
-// Ensure database is created and migrations applied
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
-    dbContext.Database.EnsureCreated();
-
-    await DBInitializer.SeedAsync(dbContext);
-}
+// // Ensure database is created and migrations applied
+// using (var scope = app.Services.CreateScope())
+// {
+//     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+//     var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
+//     dbContext.Database.EnsureCreated();
+//
+//     await DBInitializer.SeedAsync(dbContext);
+// }
 
 app.Run();

@@ -53,7 +53,6 @@ namespace Application.Services
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-
             return _mapper.Map<UserResponseDto>(user);
         }
 
