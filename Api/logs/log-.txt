@@ -65,3 +65,391 @@ INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
 VALUES ('20260512012124_UpdateEFTesting', '10.0.6');
 2026-05-11 21:21:42.907 -04:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 DELETE FROM "__EFMigrationsLock";
+2026-05-26 12:32:34.980 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:32:35.089 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:32:35.109 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:32:35.111 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:32:35.112 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:32:35.112 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:32:39.491 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:32:41.021 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:32:41.030 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:32:41.032 -04:00 [INF] HTTP GET / responded 404 in 1521.7203 ms
+2026-05-26 12:32:41.035 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 404 0 null 1545.5634ms
+2026-05-26 12:32:41.038 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/, Response status code: 404
+2026-05-26 12:32:41.065 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/favicon.ico - null null
+2026-05-26 12:32:41.068 -04:00 [INF] HTTP Request Information: Method: GET, Path: /favicon.ico, Body: 
+2026-05-26 12:32:41.070 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:32:41.071 -04:00 [INF] HTTP GET /favicon.ico responded 404 in 3.5420 ms
+2026-05-26 12:32:41.072 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/favicon.ico - 404 0 null 7.1741ms
+2026-05-26 12:32:41.074 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/favicon.ico, Response status code: 404
+2026-05-26 12:32:49.080 -04:00 [INF] Application is shutting down...
+2026-05-26 12:33:51.825 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:33:51.890 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:33:51.905 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:33:51.907 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:33:51.907 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:33:51.908 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:33:54.166 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:33:54.201 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:33:54.210 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:33:54.212 -04:00 [INF] HTTP GET / responded 404 in 29.5117 ms
+2026-05-26 12:33:54.215 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 404 0 null 50.918ms
+2026-05-26 12:33:54.219 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/, Response status code: 404
+2026-05-26 12:34:11.569 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:34:11.572 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:34:11.573 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:34:11.574 -04:00 [INF] HTTP GET / responded 404 in 2.8258 ms
+2026-05-26 12:34:11.575 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 404 0 null 5.5575ms
+2026-05-26 12:34:11.577 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/, Response status code: 404
+2026-05-26 12:34:37.753 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/api/norestriction - null null
+2026-05-26 12:34:37.757 -04:00 [INF] HTTP Request Information: Method: GET, Path: /api/norestriction, Body: 
+2026-05-26 12:34:37.758 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:34:37.759 -04:00 [INF] HTTP GET /api/norestriction responded 404 in 3.4762 ms
+2026-05-26 12:34:37.760 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/api/norestriction - 404 0 null 6.6957ms
+2026-05-26 12:34:37.762 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/api/norestriction, Response status code: 404
+2026-05-26 12:34:43.352 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/norestriction - null null
+2026-05-26 12:34:43.354 -04:00 [INF] HTTP Request Information: Method: GET, Path: /norestriction, Body: 
+2026-05-26 12:34:43.355 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:34:43.355 -04:00 [INF] HTTP GET /norestriction responded 404 in 1.5034 ms
+2026-05-26 12:34:43.356 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/norestriction - 404 0 null 4.1407ms
+2026-05-26 12:34:43.358 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/norestriction, Response status code: 404
+2026-05-26 12:35:40.078 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/api/main - null null
+2026-05-26 12:35:40.085 -04:00 [INF] HTTP Request Information: Method: GET, Path: /api/main, Body: 
+2026-05-26 12:35:40.086 -04:00 [INF] Executing endpoint 'Api.Controllers.MainController.Get (Api)'
+2026-05-26 12:35:40.096 -04:00 [INF] Route matched with {action = "Get", controller = "Main"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller Api.Controllers.MainController (Api).
+2026-05-26 12:35:40.101 -04:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-26 12:35:40.113 -04:00 [INF] Executed action Api.Controllers.MainController.Get (Api) in 13.4373ms
+2026-05-26 12:35:40.114 -04:00 [INF] Executed endpoint 'Api.Controllers.MainController.Get (Api)'
+2026-05-26 12:35:40.114 -04:00 [INF] HTTP Response Information: StatusCode: 200, Body: {"message":"Hello from the main controller!"}
+2026-05-26 12:35:40.115 -04:00 [INF] HTTP GET /api/main responded 200 in 29.8977 ms
+2026-05-26 12:35:40.117 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/api/main - 200 0 application/json; charset=utf-8 39.3577ms
+2026-05-26 12:35:49.653 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:35:49.655 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:35:49.656 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:35:49.657 -04:00 [INF] HTTP GET / responded 404 in 2.1079 ms
+2026-05-26 12:35:49.659 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 404 0 null 6.4557ms
+2026-05-26 12:35:49.662 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/, Response status code: 404
+2026-05-26 12:35:51.979 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/api/main - null null
+2026-05-26 12:35:51.981 -04:00 [INF] HTTP Request Information: Method: GET, Path: /api/main, Body: 
+2026-05-26 12:35:51.983 -04:00 [INF] Executing endpoint 'Api.Controllers.MainController.Get (Api)'
+2026-05-26 12:35:51.984 -04:00 [INF] Route matched with {action = "Get", controller = "Main"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Get() on controller Api.Controllers.MainController (Api).
+2026-05-26 12:35:51.986 -04:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-26 12:35:51.986 -04:00 [INF] Executed action Api.Controllers.MainController.Get (Api) in 1.4561ms
+2026-05-26 12:35:51.987 -04:00 [INF] Executed endpoint 'Api.Controllers.MainController.Get (Api)'
+2026-05-26 12:35:51.988 -04:00 [INF] HTTP Response Information: StatusCode: 200, Body: {"message":"Hello from the main controller!"}
+2026-05-26 12:35:51.989 -04:00 [INF] HTTP GET /api/main responded 200 in 7.9051 ms
+2026-05-26 12:35:51.990 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/api/main - 200 0 application/json; charset=utf-8 11.4317ms
+2026-05-26 12:42:25.685 -04:00 [INF] Application is shutting down...
+2026-05-26 12:42:49.883 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:42:49.982 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:42:50.003 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:42:50.005 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:42:50.006 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:42:50.007 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:42:55.272 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:42:55.325 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:42:55.338 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:42:55.340 -04:00 [INF] HTTP GET / responded 404 in 47.7160 ms
+2026-05-26 12:42:55.344 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 404 0 null 73.076ms
+2026-05-26 12:42:55.348 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/, Response status code: 404
+2026-05-26 12:42:58.550 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger - null null
+2026-05-26 12:42:58.553 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger, Body: 
+2026-05-26 12:42:58.555 -04:00 [INF] HTTP Response Information: StatusCode: 301, Body: 
+2026-05-26 12:42:58.555 -04:00 [INF] HTTP GET /swagger responded 301 in 3.1487 ms
+2026-05-26 12:42:58.557 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger - 301 0 null 6.9995ms
+2026-05-26 12:42:58.559 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger/index.html - null null
+2026-05-26 12:42:58.562 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger/index.html, Body: 
+2026-05-26 12:42:58.602 -04:00 [INF] HTTP Response Information: StatusCode: 200, Body: <!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+       
+</head>
+
+<body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js" charset="utf-8"></script>
+    <script src="./swagger-ui-standalone-preset.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
+</body>
+</html>
+
+2026-05-26 12:42:58.603 -04:00 [INF] HTTP GET /swagger/index.html responded 200 in 42.9666 ms
+2026-05-26 12:42:58.605 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger/index.html - 200 0 text/html;charset=utf-8 46.3761ms
+2026-05-26 12:43:07.816 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger/index.html - null null
+2026-05-26 12:43:07.819 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger/index.html, Body: 
+2026-05-26 12:43:07.821 -04:00 [INF] HTTP Response Information: StatusCode: 200, Body: <!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+       
+</head>
+
+<body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js" charset="utf-8"></script>
+    <script src="./swagger-ui-standalone-preset.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
+</body>
+</html>
+
+2026-05-26 12:43:07.822 -04:00 [INF] HTTP GET /swagger/index.html responded 200 in 3.6580 ms
+2026-05-26 12:43:07.824 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger/index.html - 200 0 text/html;charset=utf-8 7.3006ms
+2026-05-26 12:43:07.866 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/favicon.ico - null null
+2026-05-26 12:43:07.868 -04:00 [INF] HTTP Request Information: Method: GET, Path: /favicon.ico, Body: 
+2026-05-26 12:43:07.869 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:43:07.870 -04:00 [INF] HTTP GET /favicon.ico responded 404 in 2.0983 ms
+2026-05-26 12:43:07.872 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/favicon.ico - 404 0 null 5.6571ms
+2026-05-26 12:43:07.874 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/favicon.ico, Response status code: 404
+2026-05-26 12:43:10.414 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/.well-known/appspecific/com.chrome.devtools.json - null null
+2026-05-26 12:43:10.416 -04:00 [INF] HTTP Request Information: Method: GET, Path: /.well-known/appspecific/com.chrome.devtools.json, Body: 
+2026-05-26 12:43:10.416 -04:00 [INF] HTTP Response Information: StatusCode: 404, Body: 
+2026-05-26 12:43:10.417 -04:00 [INF] HTTP GET /.well-known/appspecific/com.chrome.devtools.json responded 404 in 1.5575 ms
+2026-05-26 12:43:10.418 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 4.0081ms
+2026-05-26 12:43:10.420 -04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5284/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
+2026-05-26 12:44:08.995 -04:00 [INF] Application is shutting down...
+2026-05-26 12:44:15.540 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:44:15.602 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:44:15.618 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:44:15.619 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:44:15.620 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:44:15.621 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:44:18.095 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger/index.html - null null
+2026-05-26 12:44:18.132 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger/index.html, Body: 
+2026-05-26 12:44:18.135 -04:00 [ERR] HTTP GET /swagger/index.html responded 500 in 23.4295 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:44:18.159 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:18.177 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:18.183 -04:00 [ERR] Connection id "0HNLR8O3NKTB3", Request id "0HNLR8O3NKTB3:00000001": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:44:18.188 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger/index.html - 500 0 null 94.5669ms
+2026-05-26 12:44:20.376 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger/index.html - null null
+2026-05-26 12:44:20.382 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger/index.html, Body: 
+2026-05-26 12:44:20.383 -04:00 [ERR] HTTP GET /swagger/index.html responded 500 in 2.9003 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:44:20.386 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:20.389 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:20.390 -04:00 [ERR] Connection id "0HNLR8O3NKTB3", Request id "0HNLR8O3NKTB3:00000002": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:44:20.393 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger/index.html - 500 0 null 16.5214ms
+2026-05-26 12:44:25.514 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger - null null
+2026-05-26 12:44:25.519 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger, Body: 
+2026-05-26 12:44:25.520 -04:00 [ERR] HTTP GET /swagger responded 500 in 4.8595 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:44:25.522 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:25.528 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:44:25.530 -04:00 [ERR] Connection id "0HNLR8O3NKTB3", Request id "0HNLR8O3NKTB3:00000003": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:44:25.531 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger - 500 0 null 17.6346ms
+2026-05-26 12:44:42.721 -04:00 [INF] Application is shutting down...
+2026-05-26 12:45:13.451 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:45:13.513 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:45:13.527 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:45:13.529 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:45:13.530 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:45:13.530 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:45:17.092 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/ - null null
+2026-05-26 12:45:17.128 -04:00 [INF] HTTP Request Information: Method: GET, Path: /, Body: 
+2026-05-26 12:45:17.131 -04:00 [ERR] HTTP GET / responded 500 in 22.4540 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:45:17.157 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:45:17.180 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:45:17.184 -04:00 [ERR] Connection id "0HNLR8OLA5EE9", Request id "0HNLR8OLA5EE9:00000001": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:45:17.189 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/ - 500 0 null 97.8312ms
+2026-05-26 12:45:22.368 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger/index.html - null null
+2026-05-26 12:45:22.372 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger/index.html, Body: 
+2026-05-26 12:45:22.373 -04:00 [ERR] HTTP GET /swagger/index.html responded 500 in 2.0127 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:45:22.375 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:45:22.377 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:45:22.378 -04:00 [ERR] Connection id "0HNLR8OLA5EE9", Request id "0HNLR8OLA5EE9:00000002": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:45:22.380 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger/index.html - 500 0 null 12.2952ms
+2026-05-26 12:45:33.035 -04:00 [INF] Application is shutting down...
+2026-05-26 12:46:15.723 -04:00 [INF] User profile is available. Using 'C:\Users\kcgwi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-26 12:46:15.783 -04:00 [WRN] The WebRootPath was not found: F:\Dev\MinimumBackend\Api\wwwroot. Static files may be unavailable.
+2026-05-26 12:46:15.801 -04:00 [INF] Now listening on: http://localhost:5284
+2026-05-26 12:46:15.803 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-26 12:46:15.804 -04:00 [INF] Hosting environment: Development
+2026-05-26 12:46:15.804 -04:00 [INF] Content root path: F:\Dev\MinimumBackend\Api
+2026-05-26 12:46:19.598 -04:00 [INF] Request starting HTTP/1.1 GET http://localhost:5284/swagger - null null
+2026-05-26 12:46:19.634 -04:00 [INF] HTTP Request Information: Method: GET, Path: /swagger, Body: 
+2026-05-26 12:46:19.638 -04:00 [ERR] HTTP GET /swagger responded 500 in 22.4149 ms
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-05-26 12:46:19.650 -04:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:46:19.660 -04:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+Object name: 'MemoryStream'.
+   at System.IO.Stream.ValidateCopyToArguments(Stream destination, Int32 bufferSize)
+   at System.IO.MemoryStream.CopyToAsync(Stream destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-26 12:46:19.664 -04:00 [ERR] Connection id "0HNLR8P7UC8DV", Request id "0HNLR8P7UC8DV:00000001": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Api.Middleware.LoggingMiddleware.InvokeAsync(HttpContext context) in F:\Dev\MinimumBackend\Api\Middleware\LoggingMiddleware.cs:line 25
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2026-05-26 12:46:19.669 -04:00 [INF] Request finished HTTP/1.1 GET http://localhost:5284/swagger - 500 0 null 71.069ms

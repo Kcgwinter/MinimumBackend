@@ -7,8 +7,8 @@ using Application.Services;
 using Application.Settings;
 using Core.DTOs;
 using Core.Validators;
-using Features.Todo;
-using Features.Todo.Data;
+// using Features.Todo;
+// using Features.Todo.Data;
 using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -156,23 +156,15 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseSerilogRequestLogging();
 app.UseAuthentication();
-app.UseMiddleware<LoggingMiddleware>();
-
 // app.UseMiddleware<CsrfTokenMiddleware>();
 app.UseAuthorization();
+app.UseMiddleware<LoggingMiddleware>(); // Moved to run after Authorization
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); // This generates the /openapi/v1.json
-
-    // Add this instead of Scalar
-    app.UseSwaggerUI(options =>
-    {
-        // This tells Swagger where to find the JSON file
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
-        options.RoutePrefix = "swagger";
-    });
+    app.UseSwagger();   // Serves the generated JSON document
+    app.UseSwaggerUI(); // Enables the interactive web interface
 }
 
 app.MapControllers();
@@ -181,16 +173,18 @@ app.UseRateLimiter();
 app.MapHealthChecks("/health");
 
 // Register Features
-builder.Services.AddTodoFeature(builder.Configuration.GetConnectionString("DefaultConnection")!);
+// var todoConnectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+// builder.Services.AddDbContext<TodoDbContext>(options => options.UseSqlite(todoConnectionString));
+// builder.Services.AddTodoFeature(todoConnectionString);
 
-// Ensure database is created and migrations applied
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
-    dbContext.Database.EnsureCreated();
-
-    await DBInitializer.SeedAsync(dbContext);
-}
+// // Ensure database is created and migrations applied
+// using (var scope = app.Services.CreateScope())
+// {
+//     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+//     var dbTodoContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
+//     dbContext.Database.EnsureCreated();
+// 
+//     await DBInitializer.SeedAsync(dbContext);
+// }
 
 app.Run();
