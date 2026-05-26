@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
+using Application.Mapping;
 using Application.Services;
 using Application.Settings;
 using Core.DTOs;
@@ -68,10 +69,16 @@ builder.Services.AddMediatR(cfg =>
 });
 
 // Configure AutoMapper
-builder.Services.AddAutoMapper(cfg =>
-{
-    cfg.AddMaps(typeof(Program).Assembly);
-});
+// builder.Services.AddAutoMapper(typeof(Application.Mapping.MappingProfile).Assembly);
+
+// Native DI registration in AutoMapper 13+
+builder.Services.AddAutoMapper(
+    cfg =>
+    {
+        // You can add extra configuration here if needed
+    },
+    typeof(MappingProfile).Assembly
+);
 
 // Configure Authentication
 builder
