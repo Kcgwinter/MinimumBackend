@@ -1,7 +1,8 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Application.Command;
 using Application.Interfaces;
 using Core.DTOs;
+using Core.Exceptions;
 using Core.Validators;
 using FluentValidation;
 using MediatR;
@@ -44,7 +45,7 @@ namespace Api.Controllers
                 return Ok(new { token });
             }
             // ExceptionMiddleware will handle unexpected errors, but we catch ApplicationException for specific UI feedback
-            catch (Exception ex) when (ex is ApplicationException or UnauthorizedAccessException)
+            catch (Exception ex) when (ex is InvalidCredentialsException or EmailNotConfirmedException or InvalidTokenException or UserNotFoundException or UnauthorizedAccessException)
             {
                 return Unauthorized(ex.Message);
             }
@@ -58,7 +59,7 @@ namespace Api.Controllers
                 var newToken = await _mediator.Send(new LoginWithRefreshCommand(RefreshToken));
                 return Ok(new { UserToken = RefreshToken });
             }
-            catch (ApplicationException ex)
+            catch (InvalidTokenException ex)
             {
                 return Unauthorized(ex.Message);
             }
@@ -72,7 +73,7 @@ namespace Api.Controllers
                 await _mediator.Send(new RevokeRefreshTokenCommand(RefreshToken));
                 return Ok(new { message = "Refresh token revoked successfully." });
             }
-            catch (ApplicationException ex)
+            catch (RefreshTokenNotFoundException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -106,3 +107,4 @@ namespace Api.Controllers
         }
     }
 }
+

@@ -1,8 +1,9 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 using Api.Middleware;
 using Application.Interfaces;
+using Core.Interfaces;
 using Application.Mapping;
 using Application.Services;
 using Application.Settings;
@@ -12,6 +13,7 @@ using Core.Validators;
 // using Features.Todo.Data;
 using FluentValidation;
 using Infrastructure.Data;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -199,3 +201,7 @@ app.MapHealthChecks("/health");
 // }
 
 app.Run();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+

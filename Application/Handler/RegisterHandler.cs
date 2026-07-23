@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using Application.Command;
 using Application.Interfaces;
 using Core.DTOs;
+using Core.Exceptions;
 using MediatR;
 
 namespace Application.Handler;
@@ -22,14 +23,15 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, UserResponseDto>
     {
         try
         {
-            // The request.RegisterDto holds the validated data (UserRegisterDto).
-            // Call the service layer to perform the registration.
             var user = await _authService.RegisterAsync(request.RegisterDto);
             return user;
         }
+        catch (Exception ex) when (ex is DuplicateUsernameException or InvalidCredentialsException or EmailNotConfirmedException or InvalidTokenException)
+        {
+            throw;
+        }
         catch (Exception ex)
         {
-            // Catch all other unexpected system errors, log them, and wrap them.
             throw new ApplicationException(
                 $"An unexpected error occurred during registration: {ex.Message}",
                 ex

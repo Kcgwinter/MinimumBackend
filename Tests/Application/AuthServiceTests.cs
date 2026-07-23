@@ -1,10 +1,11 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
 using Application.Services;
 using AutoMapper;
 using Core.DTOs;
 using Core.Entities;
+using Core.Exceptions;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -63,7 +64,7 @@ public class AuthServiceTests
     }
 
     [Fact]
-    public async Task RegisterAsync_WithDuplicateUsername_ThrowsApplicationException()
+    public async Task RegisterAsync_WithDuplicateUsername_ThrowsDuplicateUsernameException()
     {
         await using var context = CreateContext();
         var service = new AuthService(_mapper, _configuration, context);
@@ -84,7 +85,7 @@ public class AuthServiceTests
             Password = "Password123!",
         };
 
-        var exception = await Assert.ThrowsAsync<ApplicationException>(() =>
+        var exception = await Assert.ThrowsAsync<DuplicateUsernameException>(() =>
             service.RegisterAsync(duplicateDto)
         );
 
@@ -306,3 +307,5 @@ internal class FakeMapper : IMapper
         params string[] membersToExpand
     ) => throw new NotSupportedException();
 }
+
+

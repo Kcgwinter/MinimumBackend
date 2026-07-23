@@ -1,4 +1,5 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Core.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -32,7 +33,7 @@ namespace Application.Services
         public async Task<UserResponseDto> RegisterAsync(UserRegisterDto registerDto)
         {
             if (await UserExistsAsync(registerDto.Username))
-                throw new ApplicationException("Username already exists");
+                throw new DuplicateUsernameException();
 
             CreatePasswordHash(
                 registerDto.Password,
@@ -73,10 +74,10 @@ namespace Application.Services
                 user == null
                 || !VerifyPasswordHash(loginDto.Password, user.PasswordHash, user.PasswordSalt)
             )
-                throw new ApplicationException("Invalid credentials");
+                throw new InvalidCredentialsException();
 
             if (!user.EmailConfirmed)
-                throw new ApplicationException("Email not confirmed");
+                throw new EmailNotConfirmedException();
 
             var refreshToken = new RefreshToken
             {
@@ -100,11 +101,11 @@ namespace Application.Services
                 rt.Token == refreshToken
             );
             if (existingToken == null || existingToken.Expires < DateTime.UtcNow)
-                throw new ApplicationException("Invalid or expired refresh token");
+                throw new InvalidTokenException();
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == existingToken.UserId);
             if (user == null)
-                throw new ApplicationException("User not found");
+                throw new UserNotFoundException();
 
             // Revoke the old refresh token
             existingToken.Expires = DateTime.UtcNow; // Mark as expired
@@ -196,7 +197,7 @@ namespace Application.Services
                 return _context.SaveChangesAsync();
             }
 
-            throw new ApplicationException("Refresh token not found");
+            throw new RefreshTokenNotFoundException();
         }
 
         public Task<bool> LogoutAsync(UserLogoutDto logoutDto)
@@ -212,7 +213,7 @@ namespace Application.Services
             var token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
-                throw new ApplicationException("Email not found");
+                throw new EmailNotFoundException();
 
             user.PasswordResetToken = token;
             user.PasswordResetTokenExpires = DateTime.UtcNow.AddHours(1);
@@ -230,7 +231,7 @@ namespace Application.Services
                 .Result;
 
             if (user == null || user.PasswordResetTokenExpires < DateTime.UtcNow)
-                throw new ApplicationException("Invalid or expired token");
+                throw new InvalidTokenException();
 
             CreatePasswordHash(dto.NewPassword, out byte[] passwordHash, out byte[] passwordSalt);
 
@@ -250,7 +251,7 @@ namespace Application.Services
                 .Result;
 
             if (user == null || user.EmailConfirmationTokenExpires < DateTime.UtcNow)
-                throw new ApplicationException("Invalid or expired token");
+                throw new InvalidTokenException();
 
             user.EmailConfirmed = true;
             user.EmailConfirmationToken = null;
@@ -264,7 +265,7 @@ namespace Application.Services
         {
             var user = _context.Users.FirstOrDefaultAsync(u => u.Email == email).Result;
             if (user == null)
-                throw new ApplicationException("Email not found");
+                throw new EmailNotFoundException();
 
             user.EmailConfirmationToken = GenerateEmailConfirmationToken();
             user.EmailConfirmationTokenExpires = DateTime.UtcNow.AddHours(24);
@@ -273,3 +274,5 @@ namespace Application.Services
         }
     }
 }
+
+
