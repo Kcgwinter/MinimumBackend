@@ -19,6 +19,8 @@ A bridge document for the next session to pick up implementation without re-solv
 1. Completed a full codebase review.
 2. Produced a remediation spec at `specs/2026-07-22-codebase-remediation.md`.
 3. Broke the spec into tracer-bullet tickets in dependency order.
+4. Completed ticket 01: repository interfaces for User and RefreshToken in Core.Interfaces + Infrastructure.Repositories, with DI registration.
+5. Completed ticket 02: typed domain exceptions in Core.Exceptions replacing ApplicationException across AuthService, handlers, AuthController, and tests.
 
 ## Critical Findings (from code review)
 
@@ -42,14 +44,23 @@ A bridge document for the next session to pick up implementation without re-solv
 | P3 | Empty Features/Todo/, unused validators, placeholder tests | Various | Remove or implement |
 | P3 | FakeMapper boilerplate in tests | Tests/Application/AuthServiceTests.cs | Use real AutoMapper config |
 
+## Implementation Progress
+
+- **Ticket 01 completed**: IUserRepository and IRefreshTokenRepository in Core.Interfaces. Implementations in Infrastructure.Repositories with DI registration in Api/Program.
+- **Ticket 02 completed**: Domain exceptions in Core.Exceptions replace ApplicationException. AuthService, handlers, AuthController, and tests updated. Build passes, 9 tests green.
+
+### Commits
+
+- `00672ab` — feat: add repository interfaces and typed domain exceptions
+
 ## Approved Ticket Breakdown
 
-Tickets are written under `.scratch/minimumbackend-remediation/issues/` and numbered in dependency order. The frontier (all unblocked) is: 01, 02, 03, 04, 05, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 20.
+Tickets are written under `.scratch/minimumbackend-remediation/issues/` and numbered in dependency order. The frontier (all unblocked) is: 03, 04, 05, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 20.
 
 | # | Title | Blocked by | Status |
 |---|-------|------------|--------|
-| 01 | Add repository interfaces for User and RefreshToken | None | ready-for-agent |
-| 02 | Introduce typed domain exceptions for auth failures | None | ready-for-agent |
+| 01 | Add repository interfaces for User and RefreshToken | None | completed |
+| 02 | Introduce typed domain exceptions for auth failures | None | completed |
 | 03 | Hash sensitive tokens before persistence | None | ready-for-agent |
 | 04 | Eliminate sync-over-async blocking in AuthService | None | ready-for-agent |
 | 05 | Fix stale refresh token in loginWithRefresh flow | None | ready-for-agent |
