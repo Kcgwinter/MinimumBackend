@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Dev\\MinimumBackend\\Application\\Application.csproj": {}
+    "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj": {}
   },
   "projects": {
-    "F:\\Dev\\MinimumBackend\\Application\\Application.csproj": {
+    "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+        "projectUniqueName": "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "F:\\Dev\\MinimumBackend\\Application\\obj\\",
+        "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Dev\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\MinimumBackend\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "F:\\Dev\\MinimumBackend\\NuGet.Config",
-          "C:\\Users\\kcgwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "F:\\Dev\\Projects\\MinimumBackend\\NuGet.Config",
+          "C:\\Users\\Dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -34,11 +34,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-                "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+              "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj": {
+                "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj"
               },
-              "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
+              "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -53,7 +53,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -63,6 +63,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[14.0.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[10.0.13, )"
             },
             "MediatR": {
               "target": "Package",
@@ -89,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -367,21 +371,21 @@
         }
       }
     },
-    "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
+    "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
+        "projectUniqueName": "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "F:\\Dev\\MinimumBackend\\Core\\obj\\",
+        "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Dev\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\MinimumBackend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "F:\\Dev\\MinimumBackend\\NuGet.Config",
-          "C:\\Users\\kcgwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "F:\\Dev\\Projects\\MinimumBackend\\NuGet.Config",
+          "C:\\Users\\Dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -409,7 +413,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -441,7 +445,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -719,21 +723,21 @@
         }
       }
     },
-    "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
+    "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-        "outputPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\obj\\",
+        "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Dev\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "F:\\Dev\\MinimumBackend\\NuGet.Config",
-          "C:\\Users\\kcgwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "F:\\Dev\\Projects\\MinimumBackend\\NuGet.Config",
+          "C:\\Users\\Dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -749,8 +753,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-                "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+              "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj": {
+                "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj"
               }
             }
           }
@@ -765,7 +769,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -805,7 +809,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

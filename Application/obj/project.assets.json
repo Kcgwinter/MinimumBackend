@@ -117,6 +117,27 @@
           }
         }
       },
+      "Mapster/10.0.13": {
+        "type": "package",
+        "dependencies": {
+          "Mapster.Core": "10.0.13"
+        },
+        "compile": {
+          "lib/net10.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Mapster.dll": {}
+        }
+      },
+      "Mapster.Core/10.0.13": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Mapster.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mapster.Core.dll": {}
+        }
+      },
       "MediatR/14.1.0": {
         "type": "package",
         "dependencies": {
@@ -1560,6 +1581,35 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Mapster/10.0.13": {
+      "sha512": "/FaFSm4W6rQp5kEZa7yTtvHH2yGmuC1p22Bg2zi83+W8SMJ+5RBTEWgRK0JS2S8jIdXj2hm2s4z1egjkE2azoQ==",
+      "type": "package",
+      "path": "mapster/10.0.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net10.0/Mapster.dll",
+        "lib/net8.0/Mapster.dll",
+        "lib/net9.0/Mapster.dll",
+        "lib/netstandard2.0/Mapster.dll",
+        "mapster.10.0.13.nupkg.sha512",
+        "mapster.nuspec"
+      ]
+    },
+    "Mapster.Core/10.0.13": {
+      "sha512": "fLj/MDJy16QiL7IULC0+e2YXh9nNDhtzdNl13R6CI0Qh6181eadA6EHykWkJWgTHdMjC5Ured3fq5x1QV7U9vg==",
+      "type": "package",
+      "path": "mapster.core/10.0.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.0/Mapster.Core.dll",
+        "mapster.core.10.0.13.nupkg.sha512",
+        "mapster.core.nuspec"
       ]
     },
     "MediatR/14.1.0": {
@@ -4019,29 +4069,30 @@
       "AutoMapper >= 14.0.0",
       "Core >= 1.0.0",
       "Infrastructure >= 1.0.0",
+      "Mapster >= 10.0.13",
       "MediatR >= 14.1.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kcgwi\\.nuget\\packages\\": {},
+    "C:\\Users\\Dev\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
+      "projectUniqueName": "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "F:\\Dev\\MinimumBackend\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\kcgwi\\.nuget\\packages\\",
-      "outputPath": "F:\\Dev\\MinimumBackend\\Application\\obj\\",
+      "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\Dev\\.nuget\\packages\\",
+      "outputPath": "F:\\Dev\\Projects\\MinimumBackend\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "F:\\Dev\\MinimumBackend\\NuGet.Config",
-        "C:\\Users\\kcgwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "F:\\Dev\\Projects\\MinimumBackend\\NuGet.Config",
+        "C:\\Users\\Dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4057,11 +4108,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "F:\\Dev\\MinimumBackend\\Core\\Core.csproj": {
-              "projectPath": "F:\\Dev\\MinimumBackend\\Core\\Core.csproj"
+            "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj": {
+              "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Core\\Core.csproj"
             },
-            "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "F:\\Dev\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
+            "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "F:\\Dev\\Projects\\MinimumBackend\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -4076,7 +4127,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net10.0": {
@@ -4086,6 +4137,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[14.0.0, )"
+          },
+          "Mapster": {
+            "target": "Package",
+            "version": "[10.0.13, )"
           },
           "MediatR": {
             "target": "Package",
@@ -4112,7 +4167,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
